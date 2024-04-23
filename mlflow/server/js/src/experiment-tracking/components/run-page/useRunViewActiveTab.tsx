@@ -17,6 +17,9 @@ export const useRunViewActiveTab = (): RunPageTabName => {
   if (tabParam?.match(/^(artifactPath|artifacts)/)) {
     return RunPageTabName.ARTIFACTS;
   }
+  if (tabParam === 'monitoring') {
+    return RunPageTabName.MONITORING;
+  }
 
   return RunPageTabName.OVERVIEW;
 };

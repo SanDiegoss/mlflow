@@ -67,6 +67,12 @@ export const RunViewModeSwitch = () => {
         }
         key={RunPageTabName.ARTIFACTS}
       />
+      <Tabs.TabPane
+        tab={
+          <FormattedMessage defaultMessage="Monitoring" description="Run details page > tab selector > monitoring tab" />
+        }
+        key={RunPageTabName.MONITORING}
+      />
     </Tabs>
   );
 };

@@ -9,6 +9,7 @@ import Utils from '../../../common/utils/Utils';
 import { RunPageTabName } from '../../constants';
 import { RenameRunModal } from '../modals/RenameRunModal';
 import { RunViewArtifactTab } from './RunViewArtifactTab';
+import { RunViewMonitoringTab } from './monitoring/RunViewMonitoringTab'
 import { RunViewHeader } from './RunViewHeader';
 import { RunViewMetricCharts } from './RunViewMetricCharts';
 import { RunViewOverviewV2 } from './RunViewOverviewV2';
@@ -93,6 +94,8 @@ export const RunPageV2 = () => {
         }
       case RunPageTabName.ARTIFACTS:
         return <RunViewArtifactTab runUuid={runUuid} runTags={tags} experimentId={experimentId} />;
+      case RunPageTabName.MONITORING:
+        return <RunViewMonitoringTab runUuid={runUuid} experimentId={experimentId}/>
     }
     return <RunViewOverviewV2 runUuid={runUuid} onRunDataUpdated={refetchRun} />;
   };

@@ -1,0 +1,78 @@
+import { Modal, Typography, useDesignSystemTheme } from '@databricks/design-system';
+import { RunViewMetadataRow } from '../overview/RunViewMetadataRow';
+import { FormattedMessage } from 'react-intl';
+
+interface RuleDetailsModalProps {
+  isOpen: boolean;
+  onClose: (...args: any[]) => any;
+  runUuid: string;
+  experimentId: string;
+  ruleId: string | null;
+}
+
+export const RuleDetailsModal = ({ isOpen, onClose, runUuid, experimentId, ruleId }: RuleDetailsModalProps) => {
+  const { theme } = useDesignSystemTheme()
+  return (
+    <Modal title="Rule Details" okText="Ok" cancelText="Cancel" visible={isOpen} onOk={onClose} onCancel={onClose}
+    // @ts-expect-error TS(2322): Type '{ children: {}[] | null | undefined; "data-t... Remove this comment to see the full error message
+    width={720}
+    >
+      <div css={{ flex: '1' }}>
+        <Typography.Title level={4}>
+          <FormattedMessage defaultMessage="Details" description="Run page > Overview > Details section title" />
+        </Typography.Title>
+        <table
+          css={{
+            display: 'block',
+            border: `1px solid ${theme.colors.borderDecorative}`,
+            borderBottom: 'none',
+            borderRadius: theme.general.borderRadiusBase,
+            width: '50%',
+            minWidth: 640,
+            marginBottom: theme.spacing.lg,
+            overflow: 'hidden',
+          }}
+        >
+          <tbody css={{ display: 'block' }}>
+            <RunViewMetadataRow
+              title={
+                <FormattedMessage
+                  defaultMessage="Experiment Id"
+                  description="Run page > Monitoring > Modal"
+                />
+              }
+              value={experimentId}
+            />
+            <RunViewMetadataRow
+              title={
+                <FormattedMessage
+                  defaultMessage="Run Uuid"
+                  description="Run page > Monitoring > Modal"
+                />
+              }
+              value={runUuid}
+            />
+            <RunViewMetadataRow
+              title={
+                <FormattedMessage
+                  defaultMessage="Rule Id"
+                  description="Run page > Monitoring > Modal"
+                />
+              }
+              value={ruleId}
+            />
+            <RunViewMetadataRow
+              title={
+                <FormattedMessage
+                  defaultMessage="Rule name"
+                  description="Run page > Monitoring > Modal"
+                />
+              }
+              value={"Rule Name"}
+            />
+          </tbody>
+        </table>
+      </div>
+    </Modal>
+  );
+};
