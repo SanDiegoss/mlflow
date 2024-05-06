@@ -97,7 +97,7 @@ export const RulesTable = ({
         minSize: 120,
         header: () => (
           <FormattedMessage
-            defaultMessage="Notification methods"
+            defaultMessage="Observers count"
             description="Run page > Monitoring > Rules table > Methods column header"
           />
         ),
@@ -107,9 +107,7 @@ export const RulesTable = ({
               paddingTop: '2px',
             }}
           >
-            {original.observers.map((obs, index) => {
-              return index !== 0 ? ', ' + obs.method : obs.method;
-            })}
+            {original.observers.length}
           </div>
         ),
       },
@@ -129,7 +127,7 @@ export const RulesTable = ({
               size="small"
               css={{ flexShrink: 0 }}
               onClick={() => {
-                onDetails({ isOpen: true, currentRuleId: original.id });
+                onDetails({ isOpen: true, currentRule: original });
               }}
             >
               Details

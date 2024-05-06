@@ -1,2 +1,1 @@
-export type { Condition, ConditionBlock } from './Condition';
-export { ConditionType } from './Condition';
+export { Condition } from './Condition';

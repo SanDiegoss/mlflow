@@ -1,6 +1,6 @@
-import { NotificationInfo, NotificationMethod } from ".";
+import { NotificationInfo } from ".";
 
 export interface Observer {
-    method: NotificationMethod,
-    info: NotificationInfo
+    info: NotificationInfo,
+    id: string
 }
