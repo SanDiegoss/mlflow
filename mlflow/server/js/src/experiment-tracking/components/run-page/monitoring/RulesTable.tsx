@@ -236,14 +236,6 @@ export const RulesTable = ({
   };
 
   return (
-    <div css={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-      <Typography.Title level={4}>
-        <FormattedMessage
-          defaultMessage="Rules ({length})"
-          description="Run page > Monitoring > Rules table > Section title"
-          values={{ length: rulesList.length }}
-        />
-      </Typography.Title>
       <div
         css={{
           padding: theme.spacing.sm,
@@ -269,6 +261,5 @@ export const RulesTable = ({
         </div>
         {renderTableContent()}
       </div>
-    </div>
   );
 };

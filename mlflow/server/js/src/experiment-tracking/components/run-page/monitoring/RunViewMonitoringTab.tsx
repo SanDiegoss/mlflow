@@ -19,7 +19,7 @@ export const RunViewMonitoringTab = ({
         position: 'relative',
       }}
     >
-      {<MonitoringPage runUuid={runUuid} experimentId={experimentId} />}
+      <MonitoringPage runUuid={runUuid} experimentId={experimentId} />
     </div>
   );
 };
