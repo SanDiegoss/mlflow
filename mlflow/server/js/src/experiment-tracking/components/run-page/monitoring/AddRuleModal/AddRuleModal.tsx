@@ -1,10 +1,9 @@
-import { Modal, useDesignSystemTheme } from '@databricks/design-system';
+import { Modal } from '@databricks/design-system';
 import { AddRuleDetailsTable } from './AddRuleDetailsTable';
 import { AddRuleConditionsTable } from './AddRuleConditionsTable';
 import { AddRuleObserversTable } from './AddRuleObserversTable';
-import { RuleDTO } from '../types/Rule';
 import { useState } from 'react';
-import { Condition, Observer } from '../types';
+import { Condition, Observer, RuleDTO } from '../types';
 
 interface Props {
   isOpen: boolean;
@@ -15,7 +14,6 @@ interface Props {
 }
 
 export const AddRuleModal = ({ isOpen, onClose, onSubmit, experimentId, runUuid }: Props) => {
-  const { theme } = useDesignSystemTheme();
   const [resultRule, setResultRule] = useState<RuleDTO>({
     name: '',
     experimentId: experimentId,
@@ -29,7 +27,10 @@ export const AddRuleModal = ({ isOpen, onClose, onSubmit, experimentId, runUuid 
       okText="Ok"
       cancelText="Cancel"
       visible={isOpen}
-      onOk={onSubmit}
+      onOk={() => {
+        onSubmit(resultRule);
+        onClose();
+      }}
       onCancel={onClose}
       // @ts-expect-error TS(2322)
       width={720}

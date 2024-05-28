@@ -1,9 +1,8 @@
 import { useDesignSystemTheme, Modal, Button, Typography } from '@databricks/design-system';
 import { RulesTable } from './RulesTable';
-import { Rule, NotificationMethod } from './types';
+import { Rule, NotificationMethod, TelegramObserver } from './types';
 import { RuleDetailsModal } from './RuleDetailsModal';
 import { useState } from 'react';
-import { TelegramMethodInfo } from './types';
 import { FormattedMessage } from 'react-intl';
 import { BotModal } from './BotModal';
 import { SourcMetricsModal } from './SourceMetricsModal';
@@ -17,23 +16,15 @@ const testRule: Rule = {
   conditions: ['keka > 100'],
   observers: [
     {
-      id: '1',
-      info: {
-        method: NotificationMethod.TELEGRAM,
-        info: {
-          userId: 1,
-        } as TelegramMethodInfo,
-      },
-    },
+      id: 1,
+      method: NotificationMethod.TELEGRAM,
+      userId: 1
+    } as TelegramObserver,
     {
-      id: '2',
-      info: {
-        method: NotificationMethod.TELEGRAM,
-        info: {
-          userId: 2,
-        } as TelegramMethodInfo,
-      },
-    },
+      id: 2,
+      method: NotificationMethod.TELEGRAM,
+      userId: 2
+    } as TelegramObserver,
   ],
 };
 
@@ -85,8 +76,8 @@ const renderAddRuleButton = (isSourceAdded: boolean, isBotAuthorized: boolean, o
 export const MonitoringPage = ({ experimentId, runUuid }: { runUuid: string; experimentId: string }) => {
   const { theme } = useDesignSystemTheme();
   const [detailsModalState, setDetailsModalState] = useState<ModalState>({ isOpen: false, currentRule: null });
-  const [isBotAuthorized, setIsBotAuthorized] = useState<boolean>(true);
-  const [isSourceAdded, setIsSourceAdded] = useState<boolean>(true);
+  const [botToken, setBotToken] = useState<string>('sdfsd');
+  const [source, setSource] = useState<string>('fsfdsd');
   const [isSourceModalActive, setIsSourceModalActive] = useState<boolean>(false);
   const [isBotModalActive, setIsBotModalActive] = useState<boolean>(false);
   const [isAddRuleModalActive, setIsAddRuleModalActive] = useState<boolean>(false);
@@ -108,6 +99,9 @@ export const MonitoringPage = ({ experimentId, runUuid }: { runUuid: string; exp
           onClose={() => {
             setIsBotModalActive(false);
           }}
+          onSubmit={(value: string) => {
+            setBotToken(value);
+          }}
         />
       )}
       {isSourceModalActive && (
@@ -115,6 +109,9 @@ export const MonitoringPage = ({ experimentId, runUuid }: { runUuid: string; exp
           isOpen={isSourceModalActive}
           onClose={() => {
             setIsSourceModalActive(false);
+          }}
+          onSubmit={(value: string) => {
+            setSource(value);
           }}
         />
       )}
@@ -124,7 +121,9 @@ export const MonitoringPage = ({ experimentId, runUuid }: { runUuid: string; exp
           onClose={() => {
             setIsAddRuleModalActive(false);
           }}
-          onSubmit={() => {}}
+          onSubmit={() => {
+            // TODO FETCH NEW RULE then update rules state
+          }}
           experimentId={experimentId}
           runUuid={runUuid}
         />
@@ -147,13 +146,13 @@ export const MonitoringPage = ({ experimentId, runUuid }: { runUuid: string; exp
             gap: '10px',
           }}
         >
-          {rednerBotButton(isBotAuthorized, () => {
+          {rednerBotButton(botToken !== '', () => {
             setIsBotModalActive(true);
           })}
-          {rednerSourceButton(isSourceAdded, () => {
+          {rednerSourceButton(source !== '', () => {
             setIsSourceModalActive(true);
           })}
-          {renderAddRuleButton(isSourceAdded, isBotAuthorized, () => {
+          {renderAddRuleButton(botToken !== '', source !== '', () => {
             setIsAddRuleModalActive(true);
           })}
         </div>

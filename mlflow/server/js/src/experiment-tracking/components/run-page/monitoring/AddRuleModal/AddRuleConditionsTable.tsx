@@ -29,9 +29,6 @@ export const AddRuleConditionsTable = ({ onSubmit }: Props) => {
   const { theme } = useDesignSystemTheme();
   const [conditions, setConditions] = useState<Condition[]>([]);
   const [isAddRuleConditionModal, setIsAddRuleConditionModal] = useState<boolean>(false);
-  useEffect(() => {
-    onSubmit(conditions);
-  }, [conditions, onSubmit]);
   return (
     <div css={{ flex: '1' }}>
       <AddRuleConditionModal
@@ -41,6 +38,7 @@ export const AddRuleConditionsTable = ({ onSubmit }: Props) => {
         }}
         onSubmit={(condition: Condition) => {
           setConditions([...conditions, condition]);
+          onSubmit([...conditions, condition]);
         }}
       />
       <div
@@ -83,14 +81,15 @@ export const AddRuleConditionsTable = ({ onSubmit }: Props) => {
         }}
       >
         <tbody css={{ display: 'block' }}>
-          {conditions.map((condition, index) => (
+          {conditions.map((condition, fiilterIndex) => (
             <RunViewMetadataRow
-              title={`Condition ${index + 1}`}
+              title={`Condition ${fiilterIndex + 1}`}
               value={getConditionRow(condition, () => {
-                const newConditions = conditions.filter((condition, fiilterIndex) => {
+                const newConditions = conditions.filter((condition, index) => {
                   return fiilterIndex !== index;
                 });
                 setConditions(newConditions);
+                onSubmit(newConditions);
               })}
             />
           ))}

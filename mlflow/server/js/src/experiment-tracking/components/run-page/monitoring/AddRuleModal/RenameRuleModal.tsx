@@ -12,7 +12,7 @@ export const RenameRuleModal = ({ isOpen, onClose, setName }: Props) => {
     <SimpleChangingModal
       inputName='newRuleName'
       rulesMessage='input a new rule name'
-      inputLabel='RUle name'
+      inputLabel='Rule name'
       placeholder='new rule name'
       isOpen={isOpen}
       onClose={onClose}

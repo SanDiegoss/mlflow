@@ -1,52 +1,39 @@
 import { Button, Typography, useDesignSystemTheme } from '@databricks/design-system';
 import { useEffect, useState } from 'react';
 import { Condition, Observer } from '../types';
-import { AddRuleConditionModal } from './AddRuleConditionModal';
 import { FormattedMessage } from 'react-intl';
 import { RunViewMetadataRow } from '../../overview/RunViewMetadataRow';
 import { Theme } from '@databricks/design-system/dist/theme';
+import { ObserverView } from '../ObserverView';
+import { AddRuleObserverModal } from './AddRuleObserverModal';
 
 interface Props {
   onSubmit: (...args: any[]) => any;
 }
 
-const getObserverTable = (observer: Observer, theme: Theme, onDelete: (...args: any[]) => any) => {
-  return (
-    <table
-        css={{
-          display: 'block',
-          border: `1px solid ${theme.colors.borderDecorative}`,
-          borderBottom: 'none',
-          borderRadius: theme.general.borderRadiusBase,
-          width: '50%',
-          minWidth: 640,
-          marginBottom: theme.spacing.lg,
-          overflow: 'hidden',
-        }}
-      >
-        <tbody css={{ display: 'block' }}>
-          
-        </tbody>
-      </table>
-  );
-};
-
 export const AddRuleObserversTable = ({ onSubmit }: Props) => {
   const { theme } = useDesignSystemTheme();
   const [observers, setObservers] = useState<Observer[]>([]);
   const [isAddRuleObserverModal, setIsAddRuleObservernModal] = useState<boolean>(false);
-  useEffect(() => {
-    onSubmit(observers);
-  }, [observers, onSubmit]);
+  const submitObservers = (observers: Observer[]) => {
+    const newObservers = observers.map((observer, index) => {
+      return {
+        ...observer,
+        id: index + 1,
+      };
+    });
+    setObservers(newObservers);
+    onSubmit(newObservers);
+  }
   return (
-    <div css={{ flex: '1' }}>
-      <AddRuleConditionModal
+    <div css={{ flex: '1'}}>
+      <AddRuleObserverModal
         isOpen={isAddRuleObserverModal}
         onClose={() => {
-            setIsAddRuleObservernModal(false);
+          setIsAddRuleObservernModal(false);
         }}
         onSubmit={(observer: Observer) => {
-            setObservers([...observers, observer]);
+          submitObservers([...observers, observer]);
         }}
       />
       <div
@@ -76,13 +63,23 @@ export const AddRuleObserversTable = ({ onSubmit }: Props) => {
         </Button>
       </div>
 
-      {observers.map((observer, index) => (
-        getObserverTable(observer, theme, () => {
-            const newObservers = observers.filter((observer, fiilterIndex) => {
-              return fiilterIndex !== index;
-            });
-            setObservers(newObservers);
-          })
+      {observers.map((observer, filterIndex) => (
+        <div css={{ display: 'flex', flexDirection: 'column' }}>
+          <ObserverView observer={observer} />
+          <Button
+            css={{ flexShrink: 0, width: '10%', marginBottom: '15px' }}
+            componentId="codegen_mlflow_app_src_experiment-tracking_components_run-page_monitoring_rulestable.tsx_10"
+            size="small"
+            onClick={() => {
+              const newObservers = observers.filter((observer, index) => {
+                return filterIndex !== index;
+              });
+              submitObservers(newObservers);
+            }}
+          >
+            Delete
+          </Button>
+        </div>
       ))}
     </div>
   );

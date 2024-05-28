@@ -1,6 +1,11 @@
-import { NotificationInfo } from ".";
+import { NotificationMethod } from '.';
 
 export interface Observer {
-    info: NotificationInfo,
-    id: string
+  id: number;
+  method: NotificationMethod;
+  [key: string]: any;
+}
+
+export interface TelegramObserver extends Observer {
+  userId: number;
 }

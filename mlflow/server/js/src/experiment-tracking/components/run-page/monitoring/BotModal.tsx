@@ -3,10 +3,10 @@ import { SimpleChangingModal } from './SimpleChangingModal/SimpleChangingModal';
 interface BotModalProps {
   isOpen: boolean;
   onClose: (...args: any[]) => any;
+  onSubmit: (...args: any[]) => any;
 }
 
-export const BotModal = ({ isOpen, onClose }: BotModalProps) => {
-  const onSubmit = async (value: any) => {};
+export const BotModal = ({ isOpen, onClose, onSubmit }: BotModalProps) => {
 
   return (
     <SimpleChangingModal

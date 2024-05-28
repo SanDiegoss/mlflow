@@ -10,13 +10,26 @@ interface Props {
   onSubmit: (...args: any[]) => any;
 }
 
+const renderNameRow = (name: string, onClick: (...args: any[]) => any) => {
+  return (
+    <div css={{ display: 'flex', flexDirection: 'row', width: '100%' }}>
+      <div css={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>{name}</div>
+      <Button
+        css={{ flexShrink: 0, marginLeft: 'auto', paddingBottom: '10px' }}
+        componentId="codegen_mlflow_app_src_experiment-tracking_components_run-page_monitoring_rulestable.tsx_4"
+        size="small"
+        onClick={onClick}
+      >
+        {name === '' ? 'Add' : 'Edit'}
+      </Button>
+    </div>
+  );
+};
+
 export const AddRuleDetailsTable = ({ experimentId, runUuid, onSubmit }: Props) => {
   const { theme } = useDesignSystemTheme();
   const [name, setStateName] = useState<string>('');
   const [isRenameModalOpen, setIsRenameModalOpen] = useState<boolean>(false);
-  useEffect(() => {
-    onSubmit(name);
-  }, [name, onSubmit]);
   return (
     <div css={{ flex: '1' }}>
       <RenameRuleModal
@@ -26,6 +39,7 @@ export const AddRuleDetailsTable = ({ experimentId, runUuid, onSubmit }: Props) 
         }}
         setName={(name: string) => {
           setStateName(name);
+          onSubmit(name);
         }}
       />
       <div
@@ -39,16 +53,6 @@ export const AddRuleDetailsTable = ({ experimentId, runUuid, onSubmit }: Props) 
         <Typography.Title level={4}>
           <FormattedMessage defaultMessage="Details" description="Run page > Overview > Details section title" />
         </Typography.Title>
-        <Button
-          css={{ flexShrink: 0, marginLeft: 'auto', paddingBottom: '10px' }}
-          componentId="codegen_mlflow_app_src_experiment-tracking_components_run-page_monitoring_rulestable.tsx_4"
-          size="small"
-          onClick={() => {
-            setIsRenameModalOpen(true);
-          }}
-        >
-          {name === '' ? 'Add Rule name' : 'Change Rule name'}
-        </Button>
       </div>
 
       <table
@@ -73,9 +77,11 @@ export const AddRuleDetailsTable = ({ experimentId, runUuid, onSubmit }: Props) 
             value={runUuid}
           />
           <RunViewMetadataRow
-            title={<FormattedMessage defaultMessage="Rule name" description="Run page > Monitoring > Modal" />}
-            value={name}
-          />
+              title='Rule name'
+              value={renderNameRow(name, () => {
+                setIsRenameModalOpen(true);
+              })}
+            />
         </tbody>
       </table>
     </div>
