@@ -2304,9 +2304,15 @@ def _get_metrics_source():
 @_disable_if_artifacts_only
 def _get_custom_metrics():
     requests_url = _get_tracking_store().get_metrics_source()
-    requests_response = requests.get(url=requests_url)
-    custom_metrics = requests_response.json()
+    try:
+        requests_response = requests.get(url=requests_url)
+    except requests.exceptions.RequestException:
+        response = Response(mimetype="application/json")
+        response.set_data("Metrics source is not correct.")
+        response.status_code = 400
+        return response
 
+    custom_metrics = requests_response.json()
     response_message = GetCustomMetrics.Response()
     response_message.custom_metrics.extend([cm.to_proto() for cm in custom_metrics])
     response = Response(mimetype="application/json")
