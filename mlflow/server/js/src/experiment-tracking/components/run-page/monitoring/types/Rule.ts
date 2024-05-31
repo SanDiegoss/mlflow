@@ -2,8 +2,8 @@ import { Condition, Observer } from '.';
 
 export interface RuleDTO {
   name: string;
-  experimentId: string;
-  runUuid: string;
+  experiment_id: string;
+  run_id: string;
   conditions: Condition[];
   observers: Observer[];
 }

@@ -7,5 +7,5 @@ export interface Observer {
 }
 
 export interface TelegramObserver extends Observer {
-  userId: number;
+  user_id: number;
 }

@@ -16,8 +16,8 @@ interface Props {
 export const AddRuleModal = ({ isOpen, onClose, onSubmit, experimentId, runUuid }: Props) => {
   const [resultRule, setResultRule] = useState<RuleDTO>({
     name: '',
-    experimentId: experimentId,
-    runUuid: runUuid,
+    experiment_id: experimentId,
+    run_id: runUuid,
     conditions: [],
     observers: [],
   });

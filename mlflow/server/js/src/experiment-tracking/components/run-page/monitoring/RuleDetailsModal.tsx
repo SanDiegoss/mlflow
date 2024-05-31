@@ -12,7 +12,7 @@ interface RuleDetailsModalProps {
 }
 
 export const RuleDetailsModal = ({ isOpen, onClose, rule }: RuleDetailsModalProps) => {
-  const { id, runUuid, experimentId, name } = rule;
+  const { id, run_id, experiment_id, name } = rule;
   const { theme } = useDesignSystemTheme();
   return (
     <Modal
@@ -44,11 +44,11 @@ export const RuleDetailsModal = ({ isOpen, onClose, rule }: RuleDetailsModalProp
           <tbody css={{ display: 'block' }}>
             <RunViewMetadataRow
               title={<FormattedMessage defaultMessage="Experiment Id" description="Run page > Monitoring > Modal" />}
-              value={experimentId}
+              value={experiment_id}
             />
             <RunViewMetadataRow
               title={<FormattedMessage defaultMessage="Run Uuid" description="Run page > Monitoring > Modal" />}
-              value={runUuid}
+              value={run_id}
             />
             <RunViewMetadataRow
               title={<FormattedMessage defaultMessage="Rule Id" description="Run page > Monitoring > Modal" />}

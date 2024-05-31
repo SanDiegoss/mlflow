@@ -12,19 +12,19 @@ import { HTTPMethods, fetchEndpoint } from 'common/utils/FetchUtils';
 const testRule: Rule = {
   id: '1',
   name: 'MyFirstRule',
-  experimentId: 'experimentIdExample',
-  runUuid: 'runUuidExample',
+  experiment_id: 'experimentIdExample',
+  run_id: 'runUuidExample',
   conditions: ['keka > 100'],
   observers: [
     {
       id: 1,
       method: NotificationMethod.TELEGRAM,
-      userId: 1,
+      user_id: 1,
     } as TelegramObserver,
     {
       id: 2,
       method: NotificationMethod.TELEGRAM,
-      userId: 2,
+      user_id: 2,
     } as TelegramObserver,
   ],
 };
@@ -100,6 +100,15 @@ export const MonitoringPage = ({ experimentId, runUuid }: { runUuid: string; exp
       success: async ({ resolve, response }: any) => {
         const token = (await response.json()).token as string;
         setBotToken(token);
+        resolve();
+      },
+    });
+    fetchEndpoint({
+      relativeUrl: `ajax-api/2.0/mlflow/rules/get`,
+      method: HTTPMethods.GET,
+      success: async ({ resolve, response }: any) => {
+        const rules = (await response.json()).rules as Rule[];
+        setRules(rules);
         resolve();
       },
     });

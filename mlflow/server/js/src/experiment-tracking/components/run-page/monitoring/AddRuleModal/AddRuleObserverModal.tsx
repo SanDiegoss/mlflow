@@ -20,7 +20,7 @@ export const AddRuleObserverModal = ({ isOpen, onClose, onSubmit }: Props) => {
         const newObserver: TelegramObserver = {
             id: 0,
             method: method,
-            userId: userId
+            user_id: userId
         }
         onSubmit(newObserver);
       }}
