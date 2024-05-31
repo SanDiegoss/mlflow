@@ -428,6 +428,54 @@ service MlflowService {
       rpc_doc_title: "Log Inputs",
     };
   }
+
+  rpc addBotToken (AddBotToken) returns (AddBotToken.Response) {
+    option (rpc) = {
+      endpoints: [{
+        method: "POST",
+        path: "/mlflow/bot-token/add"
+        since { major: 2, minor: 0 },
+      }],
+      visibility: PUBLIC,
+      rpc_doc_title: "Add Bot Token",
+    };
+  }
+
+  rpc getBotToken (GetBotToken) returns (GetBotToken.Response) {
+    option (rpc) = {
+      endpoints: [{
+        method: "GET",
+        path: "/mlflow/bot-token/get"
+        since { major: 2, minor: 0 },
+      }],
+      visibility: PUBLIC,
+      rpc_doc_title: "Get Bot Token",
+    };
+  }
+
+  rpc addMetricsSource (AddMetricsSource) returns (AddMetricsSource.Response) {    
+    option (rpc) = {
+      endpoints: [{
+        method: "POST",
+        path: "/mlflow/metrics-source/add"
+        since { major: 2, minor: 0 },
+      }],
+      visibility: PUBLIC,
+      rpc_doc_title: "Add Metrics Source",
+    };
+  }
+  
+  rpc getMetricsSource (GetMetricsSource) returns (GetMetricsSource.Response) {    
+    option (rpc) = {
+      endpoints: [{
+        method: "GET",
+        path: "/mlflow/metrics-source/get"
+        since { major: 2, minor: 0 },
+      }],
+      visibility: PUBLIC,
+      rpc_doc_title: "Get Metrics Source",
+    };
+  }
 }
 
 // View type for ListExperiments query.
@@ -1174,5 +1222,43 @@ message GetExperimentByName {
   message Response {
     // Experiment details.
     optional Experiment experiment = 1;
+  }
+}
+
+message AddBotToken {
+  option (scalapb.message).extends = "com.databricks.rpc.RPC[$this.Response]";
+
+  // New token of the bot.
+  optional string token = 1 [(validate_required) = true];
+
+  message Response {
+  }
+}
+
+message GetBotToken {
+  option (scalapb.message).extends = "com.databricks.rpc.RPC[$this.Response]";
+
+  message Response {
+    // Current token of the bot.
+    optional string token = 1;
+  }
+}
+
+message AddMetricsSource {
+  option (scalapb.message).extends = "com.databricks.rpc.RPC[$this.Response]";
+
+  // New source of the metrics.
+  optional string source = 1 [(validate_required) = true];
+
+  message Response {
+  }
+}
+
+message GetMetricsSource {
+  option (scalapb.message).extends = "com.databricks.rpc.RPC[$this.Response]";
+
+  message Response {
+    // Current source of the metrics.
+    optional string source = 1;
   }
 }

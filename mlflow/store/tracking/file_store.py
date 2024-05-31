@@ -983,6 +983,60 @@ class FileStore(AbstractStore):
                 databricks_pb2.INVALID_PARAMETER_VALUE,
             )
 
+    def add_bot_token(self, token):
+        global_meta = os.path.join(self.root_directory, FileStore.META_DATA_FILE_NAME)
+
+        meta_info_dict = {}
+        if os.path.exists(global_meta):
+            meta_info_dict = read_yaml(self.root_directory, FileStore.META_DATA_FILE_NAME)
+
+        meta_info_dict["token"] = token
+        write_yaml(
+            self.root_directory, FileStore.META_DATA_FILE_NAME, meta_info_dict, overwrite=True
+        )
+        return
+
+    def get_bot_token(self):
+        global_meta = os.path.join(self.root_directory, FileStore.META_DATA_FILE_NAME)
+
+        if not os.path.exists(global_meta):
+            return ""
+
+        meta_info_dict = {}
+        meta_info_dict = read_yaml(self.root_directory, FileStore.META_DATA_FILE_NAME)
+
+        if meta_info_dict.get("token") is None:
+            return ""
+
+        return meta_info_dict["token"]
+
+    def add_metrics_source(self, source):
+        global_meta = os.path.join(self.root_directory, FileStore.META_DATA_FILE_NAME)
+
+        meta_info_dict = {}
+        if os.path.exists(global_meta):
+            meta_info_dict = read_yaml(self.root_directory, FileStore.META_DATA_FILE_NAME)
+
+        meta_info_dict["source"] = source
+        write_yaml(
+            self.root_directory, FileStore.META_DATA_FILE_NAME, meta_info_dict, overwrite=True
+        )
+        return
+
+    def get_metrics_source(self):
+        global_meta = os.path.join(self.root_directory, FileStore.META_DATA_FILE_NAME)
+
+        if not os.path.exists(global_meta):
+            return ""
+
+        meta_info_dict = {}
+        meta_info_dict = read_yaml(self.root_directory, FileStore.META_DATA_FILE_NAME)
+
+        if meta_info_dict.get("source") is None:
+            return ""
+
+        return meta_info_dict["source"]
+
     def set_experiment_tag(self, experiment_id, tag):
         """
         Set a tag for the specified experiment

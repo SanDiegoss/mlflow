@@ -65,15 +65,19 @@ from mlflow.protos.model_registry_pb2 import (
     UpdateRegisteredModel,
 )
 from mlflow.protos.service_pb2 import (
+    AddBotToken,
+    AddMetricsSource,
     CreateExperiment,
     CreateRun,
     DeleteExperiment,
     DeleteRun,
     DeleteTag,
+    GetBotToken,
     GetExperiment,
     GetExperimentByName,
     GetMetricHistory,
     GetMetricHistoryBulkInterval,
+    GetMetricsSource,
     GetRun,
     ListArtifacts,
     LogBatch,
@@ -2249,6 +2253,52 @@ def _abort_multipart_upload_artifact(artifact_path):
     return _wrap_response(AbortMultipartUpload.Response())
 
 
+@catch_mlflow_exception
+@_disable_if_artifacts_only
+def _add_bot_token():
+    request_message = _get_request_message(
+        AddBotToken(), schema={"token": [_assert_required, _assert_string]}
+    )
+    _get_tracking_store().add_bot_token(request_message.token)
+    response_message = AddBotToken.Response()
+    response = Response(mimetype="application/json")
+    response.set_data(message_to_json(response_message))
+    return response
+
+
+@catch_mlflow_exception
+@_disable_if_artifacts_only
+def _get_bot_token():
+    response_message = GetBotToken.Response()
+    response_message.token = _get_tracking_store().get_bot_token()
+    response = Response(mimetype="application/json")
+    response.set_data(message_to_json(response_message))
+    return response
+
+
+@catch_mlflow_exception
+@_disable_if_artifacts_only
+def add_metrics_source():
+    request_message = _get_request_message(
+        AddMetricsSource(), schema={"source": [_assert_required, _assert_string]}
+    )
+    _get_tracking_store().add_metrics_source(request_message.source)
+    response_message = AddMetricsSource.Response()
+    response = Response(mimetype="application/json")
+    response.set_data(message_to_json(response_message))
+    return response
+
+
+@catch_mlflow_exception
+@_disable_if_artifacts_only
+def get_metrics_source():
+    response_message = GetMetricsSource.Response()
+    response_message.source = _get_tracking_store().get_metrics_source()
+    response = Response(mimetype="application/json")
+    response.set_data(message_to_json(response_message))
+    return response
+
+
 def _get_rest_path(base_path):
     return f"/api/2.0{base_path}"
 
@@ -2361,4 +2411,8 @@ HANDLERS = {
     CreateMultipartUpload: _create_multipart_upload_artifact,
     CompleteMultipartUpload: _complete_multipart_upload_artifact,
     AbortMultipartUpload: _abort_multipart_upload_artifact,
+    AddBotToken: _add_bot_token,
+    GetBotToken: _get_bot_token,
+    AddMetricsSource: add_metrics_source,
+    GetMetricsSource: get_metrics_source,
 }

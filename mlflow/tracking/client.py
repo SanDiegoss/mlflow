@@ -2286,6 +2286,18 @@ class MlflowClient:
             experiment_ids, filter_string, run_view_type, max_results, order_by, page_token
         )
 
+    def add_bot_token(self, token: str) -> None:
+        return self._tracking_client.add_bot_token(token)
+
+    def get_bot_token(self) -> str:
+        return self._tracking_client.get_bot_token()
+
+    def add_metrics_source(self, source: str) -> None:
+        return self._tracking_client.add_metrics_source(source)
+
+    def get_metrics_source(self) -> str:
+        return self._tracking_client.get_metrics_source()
+
     # Registry API
 
     # Registered Model Methods

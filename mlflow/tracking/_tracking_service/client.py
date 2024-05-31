@@ -670,3 +670,15 @@ class TrackingServiceClient:
             order_by=order_by,
             page_token=page_token,
         )
+
+    def add_bot_token(self, token: str) -> None:
+        return self.store.add_bot_token(token)
+
+    def get_bot_token(self) -> str:
+        return self.store.get_bot_token()
+
+    def add_metrics_source(self, source: str) -> None:
+        return self.store.add_metrics_source(source)
+
+    def get_metrics_source(self) -> str:
+        return self.store.get_metrics_source()
