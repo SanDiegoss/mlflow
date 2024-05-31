@@ -2298,6 +2298,9 @@ class MlflowClient:
     def get_metrics_source(self) -> str:
         return self._tracking_client.get_metrics_source()
 
+    def get_custom_metrics(self):
+        return self._tracking_client.get_custom_metrics()
+
     # Registry API
 
     # Registered Model Methods

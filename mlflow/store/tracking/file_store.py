@@ -154,6 +154,7 @@ class FileStore(AbstractStore):
     INPUTS_FOLDER_NAME = "inputs"
     RESERVED_EXPERIMENT_FOLDERS = [EXPERIMENT_TAGS_FOLDER_NAME, DATASETS_FOLDER_NAME]
     META_DATA_FILE_NAME = "meta.yaml"
+    CUSTOM_METRICS_FILE_NAME = "custom_metrics.yaml"
     DEFAULT_EXPERIMENT_ID = "0"
 
     def __init__(self, root_directory=None, artifact_root_uri=None):

@@ -73,6 +73,7 @@ from mlflow.protos.service_pb2 import (
     DeleteRun,
     DeleteTag,
     GetBotToken,
+    GetCustomMetrics,
     GetExperiment,
     GetExperimentByName,
     GetMetricHistory,
@@ -2278,7 +2279,7 @@ def _get_bot_token():
 
 @catch_mlflow_exception
 @_disable_if_artifacts_only
-def add_metrics_source():
+def _add_metrics_source():
     request_message = _get_request_message(
         AddMetricsSource(), schema={"source": [_assert_required, _assert_string]}
     )
@@ -2291,9 +2292,23 @@ def add_metrics_source():
 
 @catch_mlflow_exception
 @_disable_if_artifacts_only
-def get_metrics_source():
+def _get_metrics_source():
     response_message = GetMetricsSource.Response()
     response_message.source = _get_tracking_store().get_metrics_source()
+    response = Response(mimetype="application/json")
+    response.set_data(message_to_json(response_message))
+    return response
+
+
+@catch_mlflow_exception
+@_disable_if_artifacts_only
+def _get_custom_metrics():
+    requests_url = _get_tracking_store().get_metrics_source()
+    requests_response = requests.get(url=requests_url)
+    custom_metrics = requests_response.json()
+
+    response_message = GetCustomMetrics.Response()
+    response_message.custom_metrics.extend([cm.to_proto() for cm in custom_metrics])
     response = Response(mimetype="application/json")
     response.set_data(message_to_json(response_message))
     return response
@@ -2413,6 +2428,7 @@ HANDLERS = {
     AbortMultipartUpload: _abort_multipart_upload_artifact,
     AddBotToken: _add_bot_token,
     GetBotToken: _get_bot_token,
-    AddMetricsSource: add_metrics_source,
-    GetMetricsSource: get_metrics_source,
+    AddMetricsSource: _add_metrics_source,
+    GetMetricsSource: _get_metrics_source,
+    GetCustomMetrics: _get_custom_metrics,
 }

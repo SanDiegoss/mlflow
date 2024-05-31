@@ -67029,6 +67029,2346 @@ public final class Service {
 
   }
 
+  public interface CustomMetricOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:mlflow.CustomMetric)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Name of the custom metric.
+     * </pre>
+     *
+     * <code>optional string name = 1;</code>
+     * @return Whether the name field is set.
+     */
+    boolean hasName();
+    /**
+     * <pre>
+     * Name of the custom metric.
+     * </pre>
+     *
+     * <code>optional string name = 1;</code>
+     * @return The name.
+     */
+    java.lang.String getName();
+    /**
+     * <pre>
+     * Name of the custom metric.
+     * </pre>
+     *
+     * <code>optional string name = 1;</code>
+     * @return The bytes for name.
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
+
+    /**
+     * <pre>
+     * Value of the custom metric.
+     * </pre>
+     *
+     * <code>optional double value = 2;</code>
+     * @return Whether the value field is set.
+     */
+    boolean hasValue();
+    /**
+     * <pre>
+     * Value of the custom metric.
+     * </pre>
+     *
+     * <code>optional double value = 2;</code>
+     * @return The value.
+     */
+    double getValue();
+
+    /**
+     * <pre>
+     * ID of the run.
+     * </pre>
+     *
+     * <code>optional string run_id = 3;</code>
+     * @return Whether the runId field is set.
+     */
+    boolean hasRunId();
+    /**
+     * <pre>
+     * ID of the run.
+     * </pre>
+     *
+     * <code>optional string run_id = 3;</code>
+     * @return The runId.
+     */
+    java.lang.String getRunId();
+    /**
+     * <pre>
+     * ID of the run.
+     * </pre>
+     *
+     * <code>optional string run_id = 3;</code>
+     * @return The bytes for runId.
+     */
+    com.google.protobuf.ByteString
+        getRunIdBytes();
+  }
+  /**
+   * Protobuf type {@code mlflow.CustomMetric}
+   */
+  public static final class CustomMetric extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:mlflow.CustomMetric)
+      CustomMetricOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use CustomMetric.newBuilder() to construct.
+    private CustomMetric(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private CustomMetric() {
+      name_ = "";
+      runId_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new CustomMetric();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private CustomMetric(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              name_ = bs;
+              break;
+            }
+            case 17: {
+              bitField0_ |= 0x00000002;
+              value_ = input.readDouble();
+              break;
+            }
+            case 26: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000004;
+              runId_ = bs;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.mlflow.api.proto.Service.internal_static_mlflow_CustomMetric_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.mlflow.api.proto.Service.internal_static_mlflow_CustomMetric_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.mlflow.api.proto.Service.CustomMetric.class, org.mlflow.api.proto.Service.CustomMetric.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int NAME_FIELD_NUMBER = 1;
+    private volatile java.lang.Object name_;
+    /**
+     * <pre>
+     * Name of the custom metric.
+     * </pre>
+     *
+     * <code>optional string name = 1;</code>
+     * @return Whether the name field is set.
+     */
+    @java.lang.Override
+    public boolean hasName() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     * Name of the custom metric.
+     * </pre>
+     *
+     * <code>optional string name = 1;</code>
+     * @return The name.
+     */
+    @java.lang.Override
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          name_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Name of the custom metric.
+     * </pre>
+     *
+     * <code>optional string name = 1;</code>
+     * @return The bytes for name.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int VALUE_FIELD_NUMBER = 2;
+    private double value_;
+    /**
+     * <pre>
+     * Value of the custom metric.
+     * </pre>
+     *
+     * <code>optional double value = 2;</code>
+     * @return Whether the value field is set.
+     */
+    @java.lang.Override
+    public boolean hasValue() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <pre>
+     * Value of the custom metric.
+     * </pre>
+     *
+     * <code>optional double value = 2;</code>
+     * @return The value.
+     */
+    @java.lang.Override
+    public double getValue() {
+      return value_;
+    }
+
+    public static final int RUN_ID_FIELD_NUMBER = 3;
+    private volatile java.lang.Object runId_;
+    /**
+     * <pre>
+     * ID of the run.
+     * </pre>
+     *
+     * <code>optional string run_id = 3;</code>
+     * @return Whether the runId field is set.
+     */
+    @java.lang.Override
+    public boolean hasRunId() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <pre>
+     * ID of the run.
+     * </pre>
+     *
+     * <code>optional string run_id = 3;</code>
+     * @return The runId.
+     */
+    @java.lang.Override
+    public java.lang.String getRunId() {
+      java.lang.Object ref = runId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          runId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * ID of the run.
+     * </pre>
+     *
+     * <code>optional string run_id = 3;</code>
+     * @return The bytes for runId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getRunIdBytes() {
+      java.lang.Object ref = runId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        runId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        output.writeDouble(2, value_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, runId_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(2, value_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, runId_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.mlflow.api.proto.Service.CustomMetric)) {
+        return super.equals(obj);
+      }
+      org.mlflow.api.proto.Service.CustomMetric other = (org.mlflow.api.proto.Service.CustomMetric) obj;
+
+      if (hasName() != other.hasName()) return false;
+      if (hasName()) {
+        if (!getName()
+            .equals(other.getName())) return false;
+      }
+      if (hasValue() != other.hasValue()) return false;
+      if (hasValue()) {
+        if (java.lang.Double.doubleToLongBits(getValue())
+            != java.lang.Double.doubleToLongBits(
+                other.getValue())) return false;
+      }
+      if (hasRunId() != other.hasRunId()) return false;
+      if (hasRunId()) {
+        if (!getRunId()
+            .equals(other.getRunId())) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasName()) {
+        hash = (37 * hash) + NAME_FIELD_NUMBER;
+        hash = (53 * hash) + getName().hashCode();
+      }
+      if (hasValue()) {
+        hash = (37 * hash) + VALUE_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            java.lang.Double.doubleToLongBits(getValue()));
+      }
+      if (hasRunId()) {
+        hash = (37 * hash) + RUN_ID_FIELD_NUMBER;
+        hash = (53 * hash) + getRunId().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static org.mlflow.api.proto.Service.CustomMetric parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.mlflow.api.proto.Service.CustomMetric parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.mlflow.api.proto.Service.CustomMetric parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.mlflow.api.proto.Service.CustomMetric parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.mlflow.api.proto.Service.CustomMetric parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.mlflow.api.proto.Service.CustomMetric parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.mlflow.api.proto.Service.CustomMetric parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.mlflow.api.proto.Service.CustomMetric parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.mlflow.api.proto.Service.CustomMetric parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static org.mlflow.api.proto.Service.CustomMetric parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.mlflow.api.proto.Service.CustomMetric parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.mlflow.api.proto.Service.CustomMetric parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.mlflow.api.proto.Service.CustomMetric prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code mlflow.CustomMetric}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:mlflow.CustomMetric)
+        org.mlflow.api.proto.Service.CustomMetricOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.mlflow.api.proto.Service.internal_static_mlflow_CustomMetric_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.mlflow.api.proto.Service.internal_static_mlflow_CustomMetric_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.mlflow.api.proto.Service.CustomMetric.class, org.mlflow.api.proto.Service.CustomMetric.Builder.class);
+      }
+
+      // Construct using org.mlflow.api.proto.Service.CustomMetric.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        name_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        value_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        runId_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.mlflow.api.proto.Service.internal_static_mlflow_CustomMetric_descriptor;
+      }
+
+      @java.lang.Override
+      public org.mlflow.api.proto.Service.CustomMetric getDefaultInstanceForType() {
+        return org.mlflow.api.proto.Service.CustomMetric.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public org.mlflow.api.proto.Service.CustomMetric build() {
+        org.mlflow.api.proto.Service.CustomMetric result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public org.mlflow.api.proto.Service.CustomMetric buildPartial() {
+        org.mlflow.api.proto.Service.CustomMetric result = new org.mlflow.api.proto.Service.CustomMetric(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.name_ = name_;
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.value_ = value_;
+          to_bitField0_ |= 0x00000002;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.runId_ = runId_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.mlflow.api.proto.Service.CustomMetric) {
+          return mergeFrom((org.mlflow.api.proto.Service.CustomMetric)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.mlflow.api.proto.Service.CustomMetric other) {
+        if (other == org.mlflow.api.proto.Service.CustomMetric.getDefaultInstance()) return this;
+        if (other.hasName()) {
+          bitField0_ |= 0x00000001;
+          name_ = other.name_;
+          onChanged();
+        }
+        if (other.hasValue()) {
+          setValue(other.getValue());
+        }
+        if (other.hasRunId()) {
+          bitField0_ |= 0x00000004;
+          runId_ = other.runId_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.mlflow.api.proto.Service.CustomMetric parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.mlflow.api.proto.Service.CustomMetric) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object name_ = "";
+      /**
+       * <pre>
+       * Name of the custom metric.
+       * </pre>
+       *
+       * <code>optional string name = 1;</code>
+       * @return Whether the name field is set.
+       */
+      public boolean hasName() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * Name of the custom metric.
+       * </pre>
+       *
+       * <code>optional string name = 1;</code>
+       * @return The name.
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            name_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Name of the custom metric.
+       * </pre>
+       *
+       * <code>optional string name = 1;</code>
+       * @return The bytes for name.
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Name of the custom metric.
+       * </pre>
+       *
+       * <code>optional string name = 1;</code>
+       * @param value The name to set.
+       * @return This builder for chaining.
+       */
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Name of the custom metric.
+       * </pre>
+       *
+       * <code>optional string name = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearName() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Name of the custom metric.
+       * </pre>
+       *
+       * <code>optional string name = 1;</code>
+       * @param value The bytes for name to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        name_ = value;
+        onChanged();
+        return this;
+      }
+
+      private double value_ ;
+      /**
+       * <pre>
+       * Value of the custom metric.
+       * </pre>
+       *
+       * <code>optional double value = 2;</code>
+       * @return Whether the value field is set.
+       */
+      @java.lang.Override
+      public boolean hasValue() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <pre>
+       * Value of the custom metric.
+       * </pre>
+       *
+       * <code>optional double value = 2;</code>
+       * @return The value.
+       */
+      @java.lang.Override
+      public double getValue() {
+        return value_;
+      }
+      /**
+       * <pre>
+       * Value of the custom metric.
+       * </pre>
+       *
+       * <code>optional double value = 2;</code>
+       * @param value The value to set.
+       * @return This builder for chaining.
+       */
+      public Builder setValue(double value) {
+        bitField0_ |= 0x00000002;
+        value_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Value of the custom metric.
+       * </pre>
+       *
+       * <code>optional double value = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearValue() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        value_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object runId_ = "";
+      /**
+       * <pre>
+       * ID of the run.
+       * </pre>
+       *
+       * <code>optional string run_id = 3;</code>
+       * @return Whether the runId field is set.
+       */
+      public boolean hasRunId() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <pre>
+       * ID of the run.
+       * </pre>
+       *
+       * <code>optional string run_id = 3;</code>
+       * @return The runId.
+       */
+      public java.lang.String getRunId() {
+        java.lang.Object ref = runId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            runId_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * ID of the run.
+       * </pre>
+       *
+       * <code>optional string run_id = 3;</code>
+       * @return The bytes for runId.
+       */
+      public com.google.protobuf.ByteString
+          getRunIdBytes() {
+        java.lang.Object ref = runId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          runId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * ID of the run.
+       * </pre>
+       *
+       * <code>optional string run_id = 3;</code>
+       * @param value The runId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRunId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        runId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * ID of the run.
+       * </pre>
+       *
+       * <code>optional string run_id = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRunId() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        runId_ = getDefaultInstance().getRunId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * ID of the run.
+       * </pre>
+       *
+       * <code>optional string run_id = 3;</code>
+       * @param value The bytes for runId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRunIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        runId_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:mlflow.CustomMetric)
+    }
+
+    // @@protoc_insertion_point(class_scope:mlflow.CustomMetric)
+    private static final org.mlflow.api.proto.Service.CustomMetric DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.mlflow.api.proto.Service.CustomMetric();
+    }
+
+    public static org.mlflow.api.proto.Service.CustomMetric getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<CustomMetric>
+        PARSER = new com.google.protobuf.AbstractParser<CustomMetric>() {
+      @java.lang.Override
+      public CustomMetric parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new CustomMetric(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<CustomMetric> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<CustomMetric> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public org.mlflow.api.proto.Service.CustomMetric getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface GetCustomMetricsOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:mlflow.GetCustomMetrics)
+      com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code mlflow.GetCustomMetrics}
+   */
+  public static final class GetCustomMetrics extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:mlflow.GetCustomMetrics)
+      GetCustomMetricsOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use GetCustomMetrics.newBuilder() to construct.
+    private GetCustomMetrics(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private GetCustomMetrics() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new GetCustomMetrics();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private GetCustomMetrics(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.mlflow.api.proto.Service.internal_static_mlflow_GetCustomMetrics_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.mlflow.api.proto.Service.internal_static_mlflow_GetCustomMetrics_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.mlflow.api.proto.Service.GetCustomMetrics.class, org.mlflow.api.proto.Service.GetCustomMetrics.Builder.class);
+    }
+
+    public interface ResponseOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:mlflow.GetCustomMetrics.Response)
+        com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <pre>
+       * All custom metrics.
+       * </pre>
+       *
+       * <code>repeated .mlflow.CustomMetric custom_metrics = 1;</code>
+       */
+      java.util.List<org.mlflow.api.proto.Service.CustomMetric> 
+          getCustomMetricsList();
+      /**
+       * <pre>
+       * All custom metrics.
+       * </pre>
+       *
+       * <code>repeated .mlflow.CustomMetric custom_metrics = 1;</code>
+       */
+      org.mlflow.api.proto.Service.CustomMetric getCustomMetrics(int index);
+      /**
+       * <pre>
+       * All custom metrics.
+       * </pre>
+       *
+       * <code>repeated .mlflow.CustomMetric custom_metrics = 1;</code>
+       */
+      int getCustomMetricsCount();
+      /**
+       * <pre>
+       * All custom metrics.
+       * </pre>
+       *
+       * <code>repeated .mlflow.CustomMetric custom_metrics = 1;</code>
+       */
+      java.util.List<? extends org.mlflow.api.proto.Service.CustomMetricOrBuilder> 
+          getCustomMetricsOrBuilderList();
+      /**
+       * <pre>
+       * All custom metrics.
+       * </pre>
+       *
+       * <code>repeated .mlflow.CustomMetric custom_metrics = 1;</code>
+       */
+      org.mlflow.api.proto.Service.CustomMetricOrBuilder getCustomMetricsOrBuilder(
+          int index);
+    }
+    /**
+     * Protobuf type {@code mlflow.GetCustomMetrics.Response}
+     */
+    public static final class Response extends
+        com.google.protobuf.GeneratedMessageV3 implements
+        // @@protoc_insertion_point(message_implements:mlflow.GetCustomMetrics.Response)
+        ResponseOrBuilder {
+    private static final long serialVersionUID = 0L;
+      // Use Response.newBuilder() to construct.
+      private Response(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        super(builder);
+      }
+      private Response() {
+        customMetrics_ = java.util.Collections.emptyList();
+      }
+
+      @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new Response();
+      }
+
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
+      private Response(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        this();
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        int mutable_bitField0_ = 0;
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                  customMetrics_ = new java.util.ArrayList<org.mlflow.api.proto.Service.CustomMetric>();
+                  mutable_bitField0_ |= 0x00000001;
+                }
+                customMetrics_.add(
+                    input.readMessage(org.mlflow.api.proto.Service.CustomMetric.PARSER, extensionRegistry));
+                break;
+              }
+              default: {
+                if (!parseUnknownField(
+                    input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e).setUnfinishedMessage(this);
+        } finally {
+          if (((mutable_bitField0_ & 0x00000001) != 0)) {
+            customMetrics_ = java.util.Collections.unmodifiableList(customMetrics_);
+          }
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.mlflow.api.proto.Service.internal_static_mlflow_GetCustomMetrics_Response_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.mlflow.api.proto.Service.internal_static_mlflow_GetCustomMetrics_Response_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.mlflow.api.proto.Service.GetCustomMetrics.Response.class, org.mlflow.api.proto.Service.GetCustomMetrics.Response.Builder.class);
+      }
+
+      public static final int CUSTOM_METRICS_FIELD_NUMBER = 1;
+      private java.util.List<org.mlflow.api.proto.Service.CustomMetric> customMetrics_;
+      /**
+       * <pre>
+       * All custom metrics.
+       * </pre>
+       *
+       * <code>repeated .mlflow.CustomMetric custom_metrics = 1;</code>
+       */
+      @java.lang.Override
+      public java.util.List<org.mlflow.api.proto.Service.CustomMetric> getCustomMetricsList() {
+        return customMetrics_;
+      }
+      /**
+       * <pre>
+       * All custom metrics.
+       * </pre>
+       *
+       * <code>repeated .mlflow.CustomMetric custom_metrics = 1;</code>
+       */
+      @java.lang.Override
+      public java.util.List<? extends org.mlflow.api.proto.Service.CustomMetricOrBuilder> 
+          getCustomMetricsOrBuilderList() {
+        return customMetrics_;
+      }
+      /**
+       * <pre>
+       * All custom metrics.
+       * </pre>
+       *
+       * <code>repeated .mlflow.CustomMetric custom_metrics = 1;</code>
+       */
+      @java.lang.Override
+      public int getCustomMetricsCount() {
+        return customMetrics_.size();
+      }
+      /**
+       * <pre>
+       * All custom metrics.
+       * </pre>
+       *
+       * <code>repeated .mlflow.CustomMetric custom_metrics = 1;</code>
+       */
+      @java.lang.Override
+      public org.mlflow.api.proto.Service.CustomMetric getCustomMetrics(int index) {
+        return customMetrics_.get(index);
+      }
+      /**
+       * <pre>
+       * All custom metrics.
+       * </pre>
+       *
+       * <code>repeated .mlflow.CustomMetric custom_metrics = 1;</code>
+       */
+      @java.lang.Override
+      public org.mlflow.api.proto.Service.CustomMetricOrBuilder getCustomMetricsOrBuilder(
+          int index) {
+        return customMetrics_.get(index);
+      }
+
+      private byte memoizedIsInitialized = -1;
+      @java.lang.Override
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      @java.lang.Override
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        for (int i = 0; i < customMetrics_.size(); i++) {
+          output.writeMessage(1, customMetrics_.get(i));
+        }
+        unknownFields.writeTo(output);
+      }
+
+      @java.lang.Override
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        for (int i = 0; i < customMetrics_.size(); i++) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(1, customMetrics_.get(i));
+        }
+        size += unknownFields.getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof org.mlflow.api.proto.Service.GetCustomMetrics.Response)) {
+          return super.equals(obj);
+        }
+        org.mlflow.api.proto.Service.GetCustomMetrics.Response other = (org.mlflow.api.proto.Service.GetCustomMetrics.Response) obj;
+
+        if (!getCustomMetricsList()
+            .equals(other.getCustomMetricsList())) return false;
+        if (!unknownFields.equals(other.unknownFields)) return false;
+        return true;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        if (getCustomMetricsCount() > 0) {
+          hash = (37 * hash) + CUSTOM_METRICS_FIELD_NUMBER;
+          hash = (53 * hash) + getCustomMetricsList().hashCode();
+        }
+        hash = (29 * hash) + unknownFields.hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static org.mlflow.api.proto.Service.GetCustomMetrics.Response parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static org.mlflow.api.proto.Service.GetCustomMetrics.Response parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static org.mlflow.api.proto.Service.GetCustomMetrics.Response parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static org.mlflow.api.proto.Service.GetCustomMetrics.Response parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static org.mlflow.api.proto.Service.GetCustomMetrics.Response parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static org.mlflow.api.proto.Service.GetCustomMetrics.Response parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static org.mlflow.api.proto.Service.GetCustomMetrics.Response parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static org.mlflow.api.proto.Service.GetCustomMetrics.Response parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static org.mlflow.api.proto.Service.GetCustomMetrics.Response parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+      public static org.mlflow.api.proto.Service.GetCustomMetrics.Response parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static org.mlflow.api.proto.Service.GetCustomMetrics.Response parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static org.mlflow.api.proto.Service.GetCustomMetrics.Response parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(org.mlflow.api.proto.Service.GetCustomMetrics.Response prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code mlflow.GetCustomMetrics.Response}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:mlflow.GetCustomMetrics.Response)
+          org.mlflow.api.proto.Service.GetCustomMetrics.ResponseOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return org.mlflow.api.proto.Service.internal_static_mlflow_GetCustomMetrics_Response_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return org.mlflow.api.proto.Service.internal_static_mlflow_GetCustomMetrics_Response_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  org.mlflow.api.proto.Service.GetCustomMetrics.Response.class, org.mlflow.api.proto.Service.GetCustomMetrics.Response.Builder.class);
+        }
+
+        // Construct using org.mlflow.api.proto.Service.GetCustomMetrics.Response.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
+            getCustomMetricsFieldBuilder();
+          }
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          if (customMetricsBuilder_ == null) {
+            customMetrics_ = java.util.Collections.emptyList();
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            customMetricsBuilder_.clear();
+          }
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return org.mlflow.api.proto.Service.internal_static_mlflow_GetCustomMetrics_Response_descriptor;
+        }
+
+        @java.lang.Override
+        public org.mlflow.api.proto.Service.GetCustomMetrics.Response getDefaultInstanceForType() {
+          return org.mlflow.api.proto.Service.GetCustomMetrics.Response.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public org.mlflow.api.proto.Service.GetCustomMetrics.Response build() {
+          org.mlflow.api.proto.Service.GetCustomMetrics.Response result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public org.mlflow.api.proto.Service.GetCustomMetrics.Response buildPartial() {
+          org.mlflow.api.proto.Service.GetCustomMetrics.Response result = new org.mlflow.api.proto.Service.GetCustomMetrics.Response(this);
+          int from_bitField0_ = bitField0_;
+          if (customMetricsBuilder_ == null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
+              customMetrics_ = java.util.Collections.unmodifiableList(customMetrics_);
+              bitField0_ = (bitField0_ & ~0x00000001);
+            }
+            result.customMetrics_ = customMetrics_;
+          } else {
+            result.customMetrics_ = customMetricsBuilder_.build();
+          }
+          onBuilt();
+          return result;
+        }
+
+        @java.lang.Override
+        public Builder clone() {
+          return super.clone();
+        }
+        @java.lang.Override
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.setField(field, value);
+        }
+        @java.lang.Override
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return super.clearField(field);
+        }
+        @java.lang.Override
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return super.clearOneof(oneof);
+        }
+        @java.lang.Override
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, java.lang.Object value) {
+          return super.setRepeatedField(field, index, value);
+        }
+        @java.lang.Override
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.addRepeatedField(field, value);
+        }
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof org.mlflow.api.proto.Service.GetCustomMetrics.Response) {
+            return mergeFrom((org.mlflow.api.proto.Service.GetCustomMetrics.Response)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(org.mlflow.api.proto.Service.GetCustomMetrics.Response other) {
+          if (other == org.mlflow.api.proto.Service.GetCustomMetrics.Response.getDefaultInstance()) return this;
+          if (customMetricsBuilder_ == null) {
+            if (!other.customMetrics_.isEmpty()) {
+              if (customMetrics_.isEmpty()) {
+                customMetrics_ = other.customMetrics_;
+                bitField0_ = (bitField0_ & ~0x00000001);
+              } else {
+                ensureCustomMetricsIsMutable();
+                customMetrics_.addAll(other.customMetrics_);
+              }
+              onChanged();
+            }
+          } else {
+            if (!other.customMetrics_.isEmpty()) {
+              if (customMetricsBuilder_.isEmpty()) {
+                customMetricsBuilder_.dispose();
+                customMetricsBuilder_ = null;
+                customMetrics_ = other.customMetrics_;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                customMetricsBuilder_ = 
+                  com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                     getCustomMetricsFieldBuilder() : null;
+              } else {
+                customMetricsBuilder_.addAllMessages(other.customMetrics_);
+              }
+            }
+          }
+          this.mergeUnknownFields(other.unknownFields);
+          onChanged();
+          return this;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+          return true;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          org.mlflow.api.proto.Service.GetCustomMetrics.Response parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (org.mlflow.api.proto.Service.GetCustomMetrics.Response) e.getUnfinishedMessage();
+            throw e.unwrapIOException();
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+        private int bitField0_;
+
+        private java.util.List<org.mlflow.api.proto.Service.CustomMetric> customMetrics_ =
+          java.util.Collections.emptyList();
+        private void ensureCustomMetricsIsMutable() {
+          if (!((bitField0_ & 0x00000001) != 0)) {
+            customMetrics_ = new java.util.ArrayList<org.mlflow.api.proto.Service.CustomMetric>(customMetrics_);
+            bitField0_ |= 0x00000001;
+           }
+        }
+
+        private com.google.protobuf.RepeatedFieldBuilderV3<
+            org.mlflow.api.proto.Service.CustomMetric, org.mlflow.api.proto.Service.CustomMetric.Builder, org.mlflow.api.proto.Service.CustomMetricOrBuilder> customMetricsBuilder_;
+
+        /**
+         * <pre>
+         * All custom metrics.
+         * </pre>
+         *
+         * <code>repeated .mlflow.CustomMetric custom_metrics = 1;</code>
+         */
+        public java.util.List<org.mlflow.api.proto.Service.CustomMetric> getCustomMetricsList() {
+          if (customMetricsBuilder_ == null) {
+            return java.util.Collections.unmodifiableList(customMetrics_);
+          } else {
+            return customMetricsBuilder_.getMessageList();
+          }
+        }
+        /**
+         * <pre>
+         * All custom metrics.
+         * </pre>
+         *
+         * <code>repeated .mlflow.CustomMetric custom_metrics = 1;</code>
+         */
+        public int getCustomMetricsCount() {
+          if (customMetricsBuilder_ == null) {
+            return customMetrics_.size();
+          } else {
+            return customMetricsBuilder_.getCount();
+          }
+        }
+        /**
+         * <pre>
+         * All custom metrics.
+         * </pre>
+         *
+         * <code>repeated .mlflow.CustomMetric custom_metrics = 1;</code>
+         */
+        public org.mlflow.api.proto.Service.CustomMetric getCustomMetrics(int index) {
+          if (customMetricsBuilder_ == null) {
+            return customMetrics_.get(index);
+          } else {
+            return customMetricsBuilder_.getMessage(index);
+          }
+        }
+        /**
+         * <pre>
+         * All custom metrics.
+         * </pre>
+         *
+         * <code>repeated .mlflow.CustomMetric custom_metrics = 1;</code>
+         */
+        public Builder setCustomMetrics(
+            int index, org.mlflow.api.proto.Service.CustomMetric value) {
+          if (customMetricsBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            ensureCustomMetricsIsMutable();
+            customMetrics_.set(index, value);
+            onChanged();
+          } else {
+            customMetricsBuilder_.setMessage(index, value);
+          }
+          return this;
+        }
+        /**
+         * <pre>
+         * All custom metrics.
+         * </pre>
+         *
+         * <code>repeated .mlflow.CustomMetric custom_metrics = 1;</code>
+         */
+        public Builder setCustomMetrics(
+            int index, org.mlflow.api.proto.Service.CustomMetric.Builder builderForValue) {
+          if (customMetricsBuilder_ == null) {
+            ensureCustomMetricsIsMutable();
+            customMetrics_.set(index, builderForValue.build());
+            onChanged();
+          } else {
+            customMetricsBuilder_.setMessage(index, builderForValue.build());
+          }
+          return this;
+        }
+        /**
+         * <pre>
+         * All custom metrics.
+         * </pre>
+         *
+         * <code>repeated .mlflow.CustomMetric custom_metrics = 1;</code>
+         */
+        public Builder addCustomMetrics(org.mlflow.api.proto.Service.CustomMetric value) {
+          if (customMetricsBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            ensureCustomMetricsIsMutable();
+            customMetrics_.add(value);
+            onChanged();
+          } else {
+            customMetricsBuilder_.addMessage(value);
+          }
+          return this;
+        }
+        /**
+         * <pre>
+         * All custom metrics.
+         * </pre>
+         *
+         * <code>repeated .mlflow.CustomMetric custom_metrics = 1;</code>
+         */
+        public Builder addCustomMetrics(
+            int index, org.mlflow.api.proto.Service.CustomMetric value) {
+          if (customMetricsBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            ensureCustomMetricsIsMutable();
+            customMetrics_.add(index, value);
+            onChanged();
+          } else {
+            customMetricsBuilder_.addMessage(index, value);
+          }
+          return this;
+        }
+        /**
+         * <pre>
+         * All custom metrics.
+         * </pre>
+         *
+         * <code>repeated .mlflow.CustomMetric custom_metrics = 1;</code>
+         */
+        public Builder addCustomMetrics(
+            org.mlflow.api.proto.Service.CustomMetric.Builder builderForValue) {
+          if (customMetricsBuilder_ == null) {
+            ensureCustomMetricsIsMutable();
+            customMetrics_.add(builderForValue.build());
+            onChanged();
+          } else {
+            customMetricsBuilder_.addMessage(builderForValue.build());
+          }
+          return this;
+        }
+        /**
+         * <pre>
+         * All custom metrics.
+         * </pre>
+         *
+         * <code>repeated .mlflow.CustomMetric custom_metrics = 1;</code>
+         */
+        public Builder addCustomMetrics(
+            int index, org.mlflow.api.proto.Service.CustomMetric.Builder builderForValue) {
+          if (customMetricsBuilder_ == null) {
+            ensureCustomMetricsIsMutable();
+            customMetrics_.add(index, builderForValue.build());
+            onChanged();
+          } else {
+            customMetricsBuilder_.addMessage(index, builderForValue.build());
+          }
+          return this;
+        }
+        /**
+         * <pre>
+         * All custom metrics.
+         * </pre>
+         *
+         * <code>repeated .mlflow.CustomMetric custom_metrics = 1;</code>
+         */
+        public Builder addAllCustomMetrics(
+            java.lang.Iterable<? extends org.mlflow.api.proto.Service.CustomMetric> values) {
+          if (customMetricsBuilder_ == null) {
+            ensureCustomMetricsIsMutable();
+            com.google.protobuf.AbstractMessageLite.Builder.addAll(
+                values, customMetrics_);
+            onChanged();
+          } else {
+            customMetricsBuilder_.addAllMessages(values);
+          }
+          return this;
+        }
+        /**
+         * <pre>
+         * All custom metrics.
+         * </pre>
+         *
+         * <code>repeated .mlflow.CustomMetric custom_metrics = 1;</code>
+         */
+        public Builder clearCustomMetrics() {
+          if (customMetricsBuilder_ == null) {
+            customMetrics_ = java.util.Collections.emptyList();
+            bitField0_ = (bitField0_ & ~0x00000001);
+            onChanged();
+          } else {
+            customMetricsBuilder_.clear();
+          }
+          return this;
+        }
+        /**
+         * <pre>
+         * All custom metrics.
+         * </pre>
+         *
+         * <code>repeated .mlflow.CustomMetric custom_metrics = 1;</code>
+         */
+        public Builder removeCustomMetrics(int index) {
+          if (customMetricsBuilder_ == null) {
+            ensureCustomMetricsIsMutable();
+            customMetrics_.remove(index);
+            onChanged();
+          } else {
+            customMetricsBuilder_.remove(index);
+          }
+          return this;
+        }
+        /**
+         * <pre>
+         * All custom metrics.
+         * </pre>
+         *
+         * <code>repeated .mlflow.CustomMetric custom_metrics = 1;</code>
+         */
+        public org.mlflow.api.proto.Service.CustomMetric.Builder getCustomMetricsBuilder(
+            int index) {
+          return getCustomMetricsFieldBuilder().getBuilder(index);
+        }
+        /**
+         * <pre>
+         * All custom metrics.
+         * </pre>
+         *
+         * <code>repeated .mlflow.CustomMetric custom_metrics = 1;</code>
+         */
+        public org.mlflow.api.proto.Service.CustomMetricOrBuilder getCustomMetricsOrBuilder(
+            int index) {
+          if (customMetricsBuilder_ == null) {
+            return customMetrics_.get(index);  } else {
+            return customMetricsBuilder_.getMessageOrBuilder(index);
+          }
+        }
+        /**
+         * <pre>
+         * All custom metrics.
+         * </pre>
+         *
+         * <code>repeated .mlflow.CustomMetric custom_metrics = 1;</code>
+         */
+        public java.util.List<? extends org.mlflow.api.proto.Service.CustomMetricOrBuilder> 
+             getCustomMetricsOrBuilderList() {
+          if (customMetricsBuilder_ != null) {
+            return customMetricsBuilder_.getMessageOrBuilderList();
+          } else {
+            return java.util.Collections.unmodifiableList(customMetrics_);
+          }
+        }
+        /**
+         * <pre>
+         * All custom metrics.
+         * </pre>
+         *
+         * <code>repeated .mlflow.CustomMetric custom_metrics = 1;</code>
+         */
+        public org.mlflow.api.proto.Service.CustomMetric.Builder addCustomMetricsBuilder() {
+          return getCustomMetricsFieldBuilder().addBuilder(
+              org.mlflow.api.proto.Service.CustomMetric.getDefaultInstance());
+        }
+        /**
+         * <pre>
+         * All custom metrics.
+         * </pre>
+         *
+         * <code>repeated .mlflow.CustomMetric custom_metrics = 1;</code>
+         */
+        public org.mlflow.api.proto.Service.CustomMetric.Builder addCustomMetricsBuilder(
+            int index) {
+          return getCustomMetricsFieldBuilder().addBuilder(
+              index, org.mlflow.api.proto.Service.CustomMetric.getDefaultInstance());
+        }
+        /**
+         * <pre>
+         * All custom metrics.
+         * </pre>
+         *
+         * <code>repeated .mlflow.CustomMetric custom_metrics = 1;</code>
+         */
+        public java.util.List<org.mlflow.api.proto.Service.CustomMetric.Builder> 
+             getCustomMetricsBuilderList() {
+          return getCustomMetricsFieldBuilder().getBuilderList();
+        }
+        private com.google.protobuf.RepeatedFieldBuilderV3<
+            org.mlflow.api.proto.Service.CustomMetric, org.mlflow.api.proto.Service.CustomMetric.Builder, org.mlflow.api.proto.Service.CustomMetricOrBuilder> 
+            getCustomMetricsFieldBuilder() {
+          if (customMetricsBuilder_ == null) {
+            customMetricsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+                org.mlflow.api.proto.Service.CustomMetric, org.mlflow.api.proto.Service.CustomMetric.Builder, org.mlflow.api.proto.Service.CustomMetricOrBuilder>(
+                    customMetrics_,
+                    ((bitField0_ & 0x00000001) != 0),
+                    getParentForChildren(),
+                    isClean());
+            customMetrics_ = null;
+          }
+          return customMetricsBuilder_;
+        }
+        @java.lang.Override
+        public final Builder setUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.setUnknownFields(unknownFields);
+        }
+
+        @java.lang.Override
+        public final Builder mergeUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.mergeUnknownFields(unknownFields);
+        }
+
+
+        // @@protoc_insertion_point(builder_scope:mlflow.GetCustomMetrics.Response)
+      }
+
+      // @@protoc_insertion_point(class_scope:mlflow.GetCustomMetrics.Response)
+      private static final org.mlflow.api.proto.Service.GetCustomMetrics.Response DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new org.mlflow.api.proto.Service.GetCustomMetrics.Response();
+      }
+
+      public static org.mlflow.api.proto.Service.GetCustomMetrics.Response getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      @java.lang.Deprecated public static final com.google.protobuf.Parser<Response>
+          PARSER = new com.google.protobuf.AbstractParser<Response>() {
+        @java.lang.Override
+        public Response parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new Response(input, extensionRegistry);
+        }
+      };
+
+      public static com.google.protobuf.Parser<Response> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<Response> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public org.mlflow.api.proto.Service.GetCustomMetrics.Response getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.mlflow.api.proto.Service.GetCustomMetrics)) {
+        return super.equals(obj);
+      }
+      org.mlflow.api.proto.Service.GetCustomMetrics other = (org.mlflow.api.proto.Service.GetCustomMetrics) obj;
+
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static org.mlflow.api.proto.Service.GetCustomMetrics parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.mlflow.api.proto.Service.GetCustomMetrics parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.mlflow.api.proto.Service.GetCustomMetrics parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.mlflow.api.proto.Service.GetCustomMetrics parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.mlflow.api.proto.Service.GetCustomMetrics parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.mlflow.api.proto.Service.GetCustomMetrics parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.mlflow.api.proto.Service.GetCustomMetrics parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.mlflow.api.proto.Service.GetCustomMetrics parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.mlflow.api.proto.Service.GetCustomMetrics parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static org.mlflow.api.proto.Service.GetCustomMetrics parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.mlflow.api.proto.Service.GetCustomMetrics parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.mlflow.api.proto.Service.GetCustomMetrics parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.mlflow.api.proto.Service.GetCustomMetrics prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code mlflow.GetCustomMetrics}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:mlflow.GetCustomMetrics)
+        org.mlflow.api.proto.Service.GetCustomMetricsOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.mlflow.api.proto.Service.internal_static_mlflow_GetCustomMetrics_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.mlflow.api.proto.Service.internal_static_mlflow_GetCustomMetrics_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.mlflow.api.proto.Service.GetCustomMetrics.class, org.mlflow.api.proto.Service.GetCustomMetrics.Builder.class);
+      }
+
+      // Construct using org.mlflow.api.proto.Service.GetCustomMetrics.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.mlflow.api.proto.Service.internal_static_mlflow_GetCustomMetrics_descriptor;
+      }
+
+      @java.lang.Override
+      public org.mlflow.api.proto.Service.GetCustomMetrics getDefaultInstanceForType() {
+        return org.mlflow.api.proto.Service.GetCustomMetrics.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public org.mlflow.api.proto.Service.GetCustomMetrics build() {
+        org.mlflow.api.proto.Service.GetCustomMetrics result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public org.mlflow.api.proto.Service.GetCustomMetrics buildPartial() {
+        org.mlflow.api.proto.Service.GetCustomMetrics result = new org.mlflow.api.proto.Service.GetCustomMetrics(this);
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.mlflow.api.proto.Service.GetCustomMetrics) {
+          return mergeFrom((org.mlflow.api.proto.Service.GetCustomMetrics)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.mlflow.api.proto.Service.GetCustomMetrics other) {
+        if (other == org.mlflow.api.proto.Service.GetCustomMetrics.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.mlflow.api.proto.Service.GetCustomMetrics parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.mlflow.api.proto.Service.GetCustomMetrics) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:mlflow.GetCustomMetrics)
+    }
+
+    // @@protoc_insertion_point(class_scope:mlflow.GetCustomMetrics)
+    private static final org.mlflow.api.proto.Service.GetCustomMetrics DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.mlflow.api.proto.Service.GetCustomMetrics();
+    }
+
+    public static org.mlflow.api.proto.Service.GetCustomMetrics getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<GetCustomMetrics>
+        PARSER = new com.google.protobuf.AbstractParser<GetCustomMetrics>() {
+      @java.lang.Override
+      public GetCustomMetrics parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new GetCustomMetrics(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<GetCustomMetrics> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<GetCustomMetrics> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public org.mlflow.api.proto.Service.GetCustomMetrics getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_mlflow_Metric_descriptor;
   private static final 
@@ -67379,6 +69719,21 @@ public final class Service {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_mlflow_GetMetricsSource_Response_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_mlflow_CustomMetric_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_mlflow_CustomMetric_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_mlflow_GetCustomMetrics_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_mlflow_GetCustomMetrics_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_mlflow_GetCustomMetrics_Response_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_mlflow_GetCustomMetrics_Response_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -67532,108 +69887,117 @@ public final class Service {
       "+\342?(\n&com.databricks.rpc.RPC[$this.Respo" +
       "nse]\"[\n\020GetMetricsSource\032\032\n\010Response\022\016\n\006" +
       "source\030\001 \001(\t:+\342?(\n&com.databricks.rpc.RP" +
-      "C[$this.Response]*6\n\010ViewType\022\017\n\013ACTIVE_" +
-      "ONLY\020\001\022\020\n\014DELETED_ONLY\020\002\022\007\n\003ALL\020\003*I\n\nSou" +
-      "rceType\022\014\n\010NOTEBOOK\020\001\022\007\n\003JOB\020\002\022\013\n\007PROJEC" +
-      "T\020\003\022\t\n\005LOCAL\020\004\022\014\n\007UNKNOWN\020\350\007*M\n\tRunStatu" +
-      "s\022\013\n\007RUNNING\020\001\022\r\n\tSCHEDULED\020\002\022\014\n\010FINISHE" +
-      "D\020\003\022\n\n\006FAILED\020\004\022\n\n\006KILLED\020\0052\340\035\n\rMlflowSe" +
-      "rvice\022\246\001\n\023getExperimentByName\022\033.mlflow.G" +
-      "etExperimentByName\032$.mlflow.GetExperimen" +
-      "tByName.Response\"L\362\206\031H\n,\n\003GET\022\037/mlflow/e" +
-      "xperiments/get-by-name\032\004\010\002\020\000\020\001*\026Get Expe" +
-      "riment By Name\022\224\001\n\020createExperiment\022\030.ml" +
-      "flow.CreateExperiment\032!.mlflow.CreateExp" +
-      "eriment.Response\"C\362\206\031?\n(\n\004POST\022\032/mlflow/" +
-      "experiments/create\032\004\010\002\020\000\020\001*\021Create Exper" +
-      "iment\022\301\001\n\021searchExperiments\022\031.mlflow.Sea" +
-      "rchExperiments\032\".mlflow.SearchExperiment" +
-      "s.Response\"m\362\206\031i\n(\n\004POST\022\032/mlflow/experi" +
-      "ments/search\032\004\010\002\020\000\n\'\n\003GET\022\032/mlflow/exper" +
-      "iments/search\032\004\010\002\020\000\020\001*\022Search Experiment" +
-      "s\022\210\001\n\rgetExperiment\022\025.mlflow.GetExperime" +
-      "nt\032\036.mlflow.GetExperiment.Response\"@\362\206\0318" +
-      "\n$\n\003GET\022\027/mlflow/experiments/get\032\004\010\002\020\000\020\001" +
-      "*\016Get Experiment\272\214\031\000\022\224\001\n\020deleteExperimen" +
-      "t\022\030.mlflow.DeleteExperiment\032!.mlflow.Del" +
-      "eteExperiment.Response\"C\362\206\031?\n(\n\004POST\022\032/m" +
-      "lflow/experiments/delete\032\004\010\002\020\000\020\001*\021Delete" +
-      " Experiment\022\231\001\n\021restoreExperiment\022\031.mlfl" +
-      "ow.RestoreExperiment\032\".mlflow.RestoreExp" +
-      "eriment.Response\"E\362\206\031A\n)\n\004POST\022\033/mlflow/" +
-      "experiments/restore\032\004\010\002\020\000\020\001*\022Restore Exp" +
-      "eriment\022\224\001\n\020updateExperiment\022\030.mlflow.Up" +
-      "dateExperiment\032!.mlflow.UpdateExperiment" +
-      ".Response\"C\362\206\031?\n(\n\004POST\022\032/mlflow/experim" +
-      "ents/update\032\004\010\002\020\000\020\001*\021Update Experiment\022q" +
-      "\n\tcreateRun\022\021.mlflow.CreateRun\032\032.mlflow." +
-      "CreateRun.Response\"5\362\206\0311\n!\n\004POST\022\023/mlflo" +
-      "w/runs/create\032\004\010\002\020\000\020\001*\nCreate Run\022q\n\tupd" +
-      "ateRun\022\021.mlflow.UpdateRun\032\032.mlflow.Updat" +
-      "eRun.Response\"5\362\206\0311\n!\n\004POST\022\023/mlflow/run" +
-      "s/update\032\004\010\002\020\000\020\001*\nUpdate Run\022q\n\tdeleteRu" +
-      "n\022\021.mlflow.DeleteRun\032\032.mlflow.DeleteRun." +
-      "Response\"5\362\206\0311\n!\n\004POST\022\023/mlflow/runs/del" +
-      "ete\032\004\010\002\020\000\020\001*\nDelete Run\022v\n\nrestoreRun\022\022." +
-      "mlflow.RestoreRun\032\033.mlflow.RestoreRun.Re" +
-      "sponse\"7\362\206\0313\n\"\n\004POST\022\024/mlflow/runs/resto" +
-      "re\032\004\010\002\020\000\020\001*\013Restore Run\022u\n\tlogMetric\022\021.m" +
-      "lflow.LogMetric\032\032.mlflow.LogMetric.Respo" +
-      "nse\"9\362\206\0315\n%\n\004POST\022\027/mlflow/runs/log-metr" +
-      "ic\032\004\010\002\020\000\020\001*\nLog Metric\022t\n\010logParam\022\020.mlf" +
-      "low.LogParam\032\031.mlflow.LogParam.Response\"" +
-      ";\362\206\0317\n(\n\004POST\022\032/mlflow/runs/log-paramete" +
-      "r\032\004\010\002\020\000\020\001*\tLog Param\022\241\001\n\020setExperimentTa" +
-      "g\022\030.mlflow.SetExperimentTag\032!.mlflow.Set" +
-      "ExperimentTag.Response\"P\362\206\031L\n4\n\004POST\022&/m" +
-      "lflow/experiments/set-experiment-tag\032\004\010\002" +
-      "\020\000\020\001*\022Set Experiment Tag\022f\n\006setTag\022\016.mlf" +
-      "low.SetTag\032\027.mlflow.SetTag.Response\"3\362\206\031" +
-      "/\n\"\n\004POST\022\024/mlflow/runs/set-tag\032\004\010\002\020\000\020\001*" +
-      "\007Set Tag\022u\n\tdeleteTag\022\021.mlflow.DeleteTag" +
-      "\032\032.mlflow.DeleteTag.Response\"9\362\206\0315\n%\n\004PO" +
-      "ST\022\027/mlflow/runs/delete-tag\032\004\010\002\020\000\020\001*\nDel" +
-      "ete Tag\022e\n\006getRun\022\016.mlflow.GetRun\032\027.mlfl" +
-      "ow.GetRun.Response\"2\362\206\031*\n\035\n\003GET\022\020/mlflow" +
-      "/runs/get\032\004\010\002\020\000\020\001*\007Get Run\272\214\031\000\022u\n\nsearch" +
-      "Runs\022\022.mlflow.SearchRuns\032\033.mlflow.Search" +
-      "Runs.Response\"6\362\206\0312\n!\n\004POST\022\023/mlflow/run" +
-      "s/search\032\004\010\002\020\000\020\001*\013Search Runs\022\203\001\n\rlistAr" +
-      "tifacts\022\025.mlflow.ListArtifacts\032\036.mlflow." +
-      "ListArtifacts.Response\";\362\206\0317\n#\n\003GET\022\026/ml" +
-      "flow/artifacts/list\032\004\010\002\020\000\020\001*\016List Artifa" +
-      "cts\022\225\001\n\020getMetricHistory\022\030.mlflow.GetMet" +
-      "ricHistory\032!.mlflow.GetMetricHistory.Res" +
-      "ponse\"D\362\206\031@\n(\n\003GET\022\033/mlflow/metrics/get-" +
-      "history\032\004\010\002\020\000\020\001*\022Get Metric History\022\263\001\n\034" +
-      "getMetricHistoryBulkInterval\022$.mlflow.Ge" +
-      "tMetricHistoryBulkInterval\032-.mlflow.GetM" +
-      "etricHistoryBulkInterval.Response\">\362\206\031:\n" +
-      "6\n\003GET\022)/mlflow/metrics/get-history-bulk" +
-      "-interval\032\004\010\002\020\013\020\003\022p\n\010logBatch\022\020.mlflow.L" +
-      "ogBatch\032\031.mlflow.LogBatch.Response\"7\362\206\0313" +
-      "\n$\n\004POST\022\026/mlflow/runs/log-batch\032\004\010\002\020\000\020\001" +
-      "*\tLog Batch\022p\n\010logModel\022\020.mlflow.LogMode" +
-      "l\032\031.mlflow.LogModel.Response\"7\362\206\0313\n$\n\004PO" +
-      "ST\022\026/mlflow/runs/log-model\032\004\010\002\020\000\020\001*\tLog " +
-      "Model\022u\n\tlogInputs\022\021.mlflow.LogInputs\032\032." +
-      "mlflow.LogInputs.Response\"9\362\206\0315\n%\n\004POST\022" +
-      "\027/mlflow/runs/log-inputs\032\004\010\002\020\000\020\001*\nLog In" +
-      "puts\022|\n\013addBotToken\022\023.mlflow.AddBotToken" +
-      "\032\034.mlflow.AddBotToken.Response\":\362\206\0316\n#\n\004" +
-      "POST\022\025/mlflow/bot-token/add\032\004\010\002\020\000\020\001*\rAdd" +
-      " Bot Token\022{\n\013getBotToken\022\023.mlflow.GetBo" +
-      "tToken\032\034.mlflow.GetBotToken.Response\"9\362\206" +
-      "\0315\n\"\n\003GET\022\025/mlflow/bot-token/get\032\004\010\002\020\000\020\001" +
-      "*\rGet Bot Token\022\225\001\n\020addMetricsSource\022\030.m" +
-      "lflow.AddMetricsSource\032!.mlflow.AddMetri" +
-      "csSource.Response\"D\362\206\031@\n(\n\004POST\022\032/mlflow" +
-      "/metrics-source/add\032\004\010\002\020\000\020\001*\022Add Metrics" +
-      " Source\022\224\001\n\020getMetricsSource\022\030.mlflow.Ge" +
-      "tMetricsSource\032!.mlflow.GetMetricsSource" +
-      ".Response\"C\362\206\031?\n\'\n\003GET\022\032/mlflow/metrics-" +
-      "source/get\032\004\010\002\020\000\020\001*\022Get Metrics SourceB\036" +
-      "\n\024org.mlflow.api.proto\220\001\001\342?\002\020\001"
+      "C[$this.Response]\";\n\014CustomMetric\022\014\n\004nam" +
+      "e\030\001 \001(\t\022\r\n\005value\030\002 \001(\001\022\016\n\006run_id\030\003 \001(\t\"y" +
+      "\n\020GetCustomMetrics\0328\n\010Response\022,\n\016custom" +
+      "_metrics\030\001 \003(\0132\024.mlflow.CustomMetric:+\342?" +
+      "(\n&com.databricks.rpc.RPC[$this.Response" +
+      "]*6\n\010ViewType\022\017\n\013ACTIVE_ONLY\020\001\022\020\n\014DELETE" +
+      "D_ONLY\020\002\022\007\n\003ALL\020\003*I\n\nSourceType\022\014\n\010NOTEB" +
+      "OOK\020\001\022\007\n\003JOB\020\002\022\013\n\007PROJECT\020\003\022\t\n\005LOCAL\020\004\022\014" +
+      "\n\007UNKNOWN\020\350\007*M\n\tRunStatus\022\013\n\007RUNNING\020\001\022\r" +
+      "\n\tSCHEDULED\020\002\022\014\n\010FINISHED\020\003\022\n\n\006FAILED\020\004\022" +
+      "\n\n\006KILLED\020\0052\367\036\n\rMlflowService\022\246\001\n\023getExp" +
+      "erimentByName\022\033.mlflow.GetExperimentByNa" +
+      "me\032$.mlflow.GetExperimentByName.Response" +
+      "\"L\362\206\031H\n,\n\003GET\022\037/mlflow/experiments/get-b" +
+      "y-name\032\004\010\002\020\000\020\001*\026Get Experiment By Name\022\224" +
+      "\001\n\020createExperiment\022\030.mlflow.CreateExper" +
+      "iment\032!.mlflow.CreateExperiment.Response" +
+      "\"C\362\206\031?\n(\n\004POST\022\032/mlflow/experiments/crea" +
+      "te\032\004\010\002\020\000\020\001*\021Create Experiment\022\301\001\n\021search" +
+      "Experiments\022\031.mlflow.SearchExperiments\032\"" +
+      ".mlflow.SearchExperiments.Response\"m\362\206\031i" +
+      "\n(\n\004POST\022\032/mlflow/experiments/search\032\004\010\002" +
+      "\020\000\n\'\n\003GET\022\032/mlflow/experiments/search\032\004\010" +
+      "\002\020\000\020\001*\022Search Experiments\022\210\001\n\rgetExperim" +
+      "ent\022\025.mlflow.GetExperiment\032\036.mlflow.GetE" +
+      "xperiment.Response\"@\362\206\0318\n$\n\003GET\022\027/mlflow" +
+      "/experiments/get\032\004\010\002\020\000\020\001*\016Get Experiment" +
+      "\272\214\031\000\022\224\001\n\020deleteExperiment\022\030.mlflow.Delet" +
+      "eExperiment\032!.mlflow.DeleteExperiment.Re" +
+      "sponse\"C\362\206\031?\n(\n\004POST\022\032/mlflow/experiment" +
+      "s/delete\032\004\010\002\020\000\020\001*\021Delete Experiment\022\231\001\n\021" +
+      "restoreExperiment\022\031.mlflow.RestoreExperi" +
+      "ment\032\".mlflow.RestoreExperiment.Response" +
+      "\"E\362\206\031A\n)\n\004POST\022\033/mlflow/experiments/rest" +
+      "ore\032\004\010\002\020\000\020\001*\022Restore Experiment\022\224\001\n\020upda" +
+      "teExperiment\022\030.mlflow.UpdateExperiment\032!" +
+      ".mlflow.UpdateExperiment.Response\"C\362\206\031?\n" +
+      "(\n\004POST\022\032/mlflow/experiments/update\032\004\010\002\020" +
+      "\000\020\001*\021Update Experiment\022q\n\tcreateRun\022\021.ml" +
+      "flow.CreateRun\032\032.mlflow.CreateRun.Respon" +
+      "se\"5\362\206\0311\n!\n\004POST\022\023/mlflow/runs/create\032\004\010" +
+      "\002\020\000\020\001*\nCreate Run\022q\n\tupdateRun\022\021.mlflow." +
+      "UpdateRun\032\032.mlflow.UpdateRun.Response\"5\362" +
+      "\206\0311\n!\n\004POST\022\023/mlflow/runs/update\032\004\010\002\020\000\020\001" +
+      "*\nUpdate Run\022q\n\tdeleteRun\022\021.mlflow.Delet" +
+      "eRun\032\032.mlflow.DeleteRun.Response\"5\362\206\0311\n!" +
+      "\n\004POST\022\023/mlflow/runs/delete\032\004\010\002\020\000\020\001*\nDel" +
+      "ete Run\022v\n\nrestoreRun\022\022.mlflow.RestoreRu" +
+      "n\032\033.mlflow.RestoreRun.Response\"7\362\206\0313\n\"\n\004" +
+      "POST\022\024/mlflow/runs/restore\032\004\010\002\020\000\020\001*\013Rest" +
+      "ore Run\022u\n\tlogMetric\022\021.mlflow.LogMetric\032" +
+      "\032.mlflow.LogMetric.Response\"9\362\206\0315\n%\n\004POS" +
+      "T\022\027/mlflow/runs/log-metric\032\004\010\002\020\000\020\001*\nLog " +
+      "Metric\022t\n\010logParam\022\020.mlflow.LogParam\032\031.m" +
+      "lflow.LogParam.Response\";\362\206\0317\n(\n\004POST\022\032/" +
+      "mlflow/runs/log-parameter\032\004\010\002\020\000\020\001*\tLog P" +
+      "aram\022\241\001\n\020setExperimentTag\022\030.mlflow.SetEx" +
+      "perimentTag\032!.mlflow.SetExperimentTag.Re" +
+      "sponse\"P\362\206\031L\n4\n\004POST\022&/mlflow/experiment" +
+      "s/set-experiment-tag\032\004\010\002\020\000\020\001*\022Set Experi" +
+      "ment Tag\022f\n\006setTag\022\016.mlflow.SetTag\032\027.mlf" +
+      "low.SetTag.Response\"3\362\206\031/\n\"\n\004POST\022\024/mlfl" +
+      "ow/runs/set-tag\032\004\010\002\020\000\020\001*\007Set Tag\022u\n\tdele" +
+      "teTag\022\021.mlflow.DeleteTag\032\032.mlflow.Delete" +
+      "Tag.Response\"9\362\206\0315\n%\n\004POST\022\027/mlflow/runs" +
+      "/delete-tag\032\004\010\002\020\000\020\001*\nDelete Tag\022e\n\006getRu" +
+      "n\022\016.mlflow.GetRun\032\027.mlflow.GetRun.Respon" +
+      "se\"2\362\206\031*\n\035\n\003GET\022\020/mlflow/runs/get\032\004\010\002\020\000\020" +
+      "\001*\007Get Run\272\214\031\000\022u\n\nsearchRuns\022\022.mlflow.Se" +
+      "archRuns\032\033.mlflow.SearchRuns.Response\"6\362" +
+      "\206\0312\n!\n\004POST\022\023/mlflow/runs/search\032\004\010\002\020\000\020\001" +
+      "*\013Search Runs\022\203\001\n\rlistArtifacts\022\025.mlflow" +
+      ".ListArtifacts\032\036.mlflow.ListArtifacts.Re" +
+      "sponse\";\362\206\0317\n#\n\003GET\022\026/mlflow/artifacts/l" +
+      "ist\032\004\010\002\020\000\020\001*\016List Artifacts\022\225\001\n\020getMetri" +
+      "cHistory\022\030.mlflow.GetMetricHistory\032!.mlf" +
+      "low.GetMetricHistory.Response\"D\362\206\031@\n(\n\003G" +
+      "ET\022\033/mlflow/metrics/get-history\032\004\010\002\020\000\020\001*" +
+      "\022Get Metric History\022\263\001\n\034getMetricHistory" +
+      "BulkInterval\022$.mlflow.GetMetricHistoryBu" +
+      "lkInterval\032-.mlflow.GetMetricHistoryBulk" +
+      "Interval.Response\">\362\206\031:\n6\n\003GET\022)/mlflow/" +
+      "metrics/get-history-bulk-interval\032\004\010\002\020\013\020" +
+      "\003\022p\n\010logBatch\022\020.mlflow.LogBatch\032\031.mlflow" +
+      ".LogBatch.Response\"7\362\206\0313\n$\n\004POST\022\026/mlflo" +
+      "w/runs/log-batch\032\004\010\002\020\000\020\001*\tLog Batch\022p\n\010l" +
+      "ogModel\022\020.mlflow.LogModel\032\031.mlflow.LogMo" +
+      "del.Response\"7\362\206\0313\n$\n\004POST\022\026/mlflow/runs" +
+      "/log-model\032\004\010\002\020\000\020\001*\tLog Model\022u\n\tlogInpu" +
+      "ts\022\021.mlflow.LogInputs\032\032.mlflow.LogInputs" +
+      ".Response\"9\362\206\0315\n%\n\004POST\022\027/mlflow/runs/lo" +
+      "g-inputs\032\004\010\002\020\000\020\001*\nLog Inputs\022|\n\013addBotTo" +
+      "ken\022\023.mlflow.AddBotToken\032\034.mlflow.AddBot" +
+      "Token.Response\":\362\206\0316\n#\n\004POST\022\025/mlflow/bo" +
+      "t-token/add\032\004\010\002\020\000\020\001*\rAdd Bot Token\022{\n\013ge" +
+      "tBotToken\022\023.mlflow.GetBotToken\032\034.mlflow." +
+      "GetBotToken.Response\"9\362\206\0315\n\"\n\003GET\022\025/mlfl" +
+      "ow/bot-token/get\032\004\010\002\020\000\020\001*\rGet Bot Token\022" +
+      "\225\001\n\020addMetricsSource\022\030.mlflow.AddMetrics" +
+      "Source\032!.mlflow.AddMetricsSource.Respons" +
+      "e\"D\362\206\031@\n(\n\004POST\022\032/mlflow/metrics-source/" +
+      "add\032\004\010\002\020\000\020\001*\022Add Metrics Source\022\224\001\n\020getM" +
+      "etricsSource\022\030.mlflow.GetMetricsSource\032!" +
+      ".mlflow.GetMetricsSource.Response\"C\362\206\031?\n" +
+      "\'\n\003GET\022\032/mlflow/metrics-source/get\032\004\010\002\020\000" +
+      "\020\001*\022Get Metrics Source\022\224\001\n\020getCustomMetr" +
+      "ics\022\030.mlflow.GetCustomMetrics\032!.mlflow.G" +
+      "etCustomMetrics.Response\"C\362\206\031?\n\'\n\003GET\022\032/" +
+      "mlflow/custom-metrics/get\032\004\010\002\020\000\020\001*\022Get C" +
+      "ustom MetricsB\036\n\024org.mlflow.api.proto\220\001\001" +
+      "\342?\002\020\001"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -68061,6 +70425,24 @@ public final class Service {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mlflow_GetMetricsSource_Response_descriptor,
         new java.lang.String[] { "Source", });
+    internal_static_mlflow_CustomMetric_descriptor =
+      getDescriptor().getMessageTypes().get(42);
+    internal_static_mlflow_CustomMetric_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_mlflow_CustomMetric_descriptor,
+        new java.lang.String[] { "Name", "Value", "RunId", });
+    internal_static_mlflow_GetCustomMetrics_descriptor =
+      getDescriptor().getMessageTypes().get(43);
+    internal_static_mlflow_GetCustomMetrics_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_mlflow_GetCustomMetrics_descriptor,
+        new java.lang.String[] { });
+    internal_static_mlflow_GetCustomMetrics_Response_descriptor =
+      internal_static_mlflow_GetCustomMetrics_descriptor.getNestedTypes().get(0);
+    internal_static_mlflow_GetCustomMetrics_Response_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_mlflow_GetCustomMetrics_Response_descriptor,
+        new java.lang.String[] { "CustomMetrics", });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(com.databricks.api.proto.databricks.Databricks.graphql);

@@ -476,6 +476,18 @@ service MlflowService {
       rpc_doc_title: "Get Metrics Source",
     };
   }
+
+  rpc getCustomMetrics (GetCustomMetrics) returns (GetCustomMetrics.Response) {    
+    option (rpc) = {
+      endpoints: [{
+        method: "GET",
+        path: "/mlflow/custom-metrics/get"
+        since { major: 2, minor: 0 },
+      }],
+      visibility: PUBLIC,
+      rpc_doc_title: "Get Custom Metrics",
+    };
+  }
 }
 
 // View type for ListExperiments query.
@@ -1260,5 +1272,26 @@ message GetMetricsSource {
   message Response {
     // Current source of the metrics.
     optional string source = 1;
+  }
+}
+
+message CustomMetric {
+
+  // Name of the custom metric.
+  optional string name = 1;
+
+  // Value of the custom metric.
+  optional double value = 2;
+
+  // ID of the run.
+  optional string run_id = 3;
+}
+
+message GetCustomMetrics {
+  option (scalapb.message).extends = "com.databricks.rpc.RPC[$this.Response]";
+
+  message Response {
+    // All custom metrics.
+    repeated CustomMetric custom_metrics = 1;
   }
 }

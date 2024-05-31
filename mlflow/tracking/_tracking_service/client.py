@@ -682,3 +682,6 @@ class TrackingServiceClient:
 
     def get_metrics_source(self) -> str:
         return self.store.get_metrics_source()
+
+    def get_custom_metrics(self):
+        return self.store.get_custom_metrics()
