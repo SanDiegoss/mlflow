@@ -8,6 +8,7 @@ import { BotModal } from './BotModal';
 import { SourcMetricsModal } from './SourceMetricsModal';
 import { AddRuleModal } from './AddRuleModal/AddRuleModal';
 import { HTTPMethods, fetchEndpoint } from 'common/utils/FetchUtils';
+import { ViewMetricsModal } from './ViewMetricsModal';
 
 const testRule: Rule = {
   id: '1',
@@ -74,6 +75,20 @@ const renderAddRuleButton = (isSourceAdded: boolean, isBotAuthorized: boolean, o
   );
 };
 
+const renderViewMetricsButton = (isSourceAdded: boolean, onClick: any) => {
+  const disabled = !isSourceAdded;
+  return (
+    <Button
+      componentId="codegen_mlflow_app_src_experiment-tracking_components_run-page_monitoring_rulestable.tsx_1234"
+      size="small"
+      onClick={onClick}
+      disabled={disabled}
+    >
+      Watch Metrics
+    </Button>
+  );
+};
+
 export const MonitoringPage = ({ experimentId, runUuid }: { runUuid: string; experimentId: string }) => {
   const { theme } = useDesignSystemTheme();
   const [detailsModalState, setDetailsModalState] = useState<ModalState>({ isOpen: false, currentRule: null });
@@ -82,6 +97,7 @@ export const MonitoringPage = ({ experimentId, runUuid }: { runUuid: string; exp
   const [isSourceModalActive, setIsSourceModalActive] = useState<boolean>(false);
   const [isBotModalActive, setIsBotModalActive] = useState<boolean>(false);
   const [isAddRuleModalActive, setIsAddRuleModalActive] = useState<boolean>(false);
+  const [isMetricsViewModal, setIsMetricsViewModal] = useState<boolean>(false);
   const [rules, setRules] = useState<Rule[]>(testRules);
 
   useEffect(() => {
@@ -103,15 +119,15 @@ export const MonitoringPage = ({ experimentId, runUuid }: { runUuid: string; exp
         resolve();
       },
     });
-    fetchEndpoint({
-      relativeUrl: `ajax-api/2.0/mlflow/rules/get`,
-      method: HTTPMethods.GET,
-      success: async ({ resolve, response }: any) => {
-        const rules = (await response.json()).rules as Rule[];
-        setRules(rules);
-        resolve();
-      },
-    });
+    // fetchEndpoint({
+    //   relativeUrl: `ajax-api/2.0/mlflow/rules/get`,
+    //   method: HTTPMethods.GET,
+    //   success: async ({ resolve, response }: any) => {
+    //     const rules = (await response.json()).rules as Rule[];
+    //     setRules(rules);
+    //     resolve();
+    //   },
+    // });
   }, []);
 
   return (
@@ -123,6 +139,16 @@ export const MonitoringPage = ({ experimentId, runUuid }: { runUuid: string; exp
             setDetailsModalState({ isOpen: false, currentRule: null });
           }}
           rule={detailsModalState.currentRule}
+        />
+      )}
+      {source !== '' && (
+        <ViewMetricsModal
+          isOpen={isMetricsViewModal}
+          onClose={() => {
+            setIsMetricsViewModal(false);
+          }}
+          metricsUrl={source}
+          runId={runUuid}
         />
       )}
       {isBotModalActive && (
@@ -215,6 +241,9 @@ export const MonitoringPage = ({ experimentId, runUuid }: { runUuid: string; exp
           })}
           {renderAddRuleButton(botToken !== '', source !== '', () => {
             setIsAddRuleModalActive(true);
+          })}
+          {renderViewMetricsButton(source !== '', () => {
+            setIsMetricsViewModal(true);
           })}
         </div>
       </div>
