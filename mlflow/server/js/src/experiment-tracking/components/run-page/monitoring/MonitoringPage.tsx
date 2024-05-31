@@ -2,11 +2,12 @@ import { useDesignSystemTheme, Modal, Button, Typography } from '@databricks/des
 import { RulesTable } from './RulesTable';
 import { Rule, NotificationMethod, TelegramObserver } from './types';
 import { RuleDetailsModal } from './RuleDetailsModal';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { BotModal } from './BotModal';
 import { SourcMetricsModal } from './SourceMetricsModal';
 import { AddRuleModal } from './AddRuleModal/AddRuleModal';
+import { HTTPMethods, fetchEndpoint } from 'common/utils/FetchUtils';
 
 const testRule: Rule = {
   id: '1',
@@ -18,12 +19,12 @@ const testRule: Rule = {
     {
       id: 1,
       method: NotificationMethod.TELEGRAM,
-      userId: 1
+      userId: 1,
     } as TelegramObserver,
     {
       id: 2,
       method: NotificationMethod.TELEGRAM,
-      userId: 2
+      userId: 2,
     } as TelegramObserver,
   ],
 };
@@ -76,11 +77,32 @@ const renderAddRuleButton = (isSourceAdded: boolean, isBotAuthorized: boolean, o
 export const MonitoringPage = ({ experimentId, runUuid }: { runUuid: string; experimentId: string }) => {
   const { theme } = useDesignSystemTheme();
   const [detailsModalState, setDetailsModalState] = useState<ModalState>({ isOpen: false, currentRule: null });
-  const [botToken, setBotToken] = useState<string>('sdfsd');
-  const [source, setSource] = useState<string>('fsfdsd');
+  const [botToken, setBotToken] = useState<string>('');
+  const [source, setSource] = useState<string>('');
   const [isSourceModalActive, setIsSourceModalActive] = useState<boolean>(false);
   const [isBotModalActive, setIsBotModalActive] = useState<boolean>(false);
   const [isAddRuleModalActive, setIsAddRuleModalActive] = useState<boolean>(false);
+
+  useEffect(() => {
+    fetchEndpoint({
+      relativeUrl: `ajax-api/2.0/mlflow/metrics-source/get`,
+      method: HTTPMethods.GET,
+      success: async ({ resolve, response }: any) => {
+        const source = (await response.json()).source as string;
+        setSource(source);
+        resolve();
+      },
+    });
+    fetchEndpoint({
+      relativeUrl: `ajax-api/2.0/mlflow/bot-token/get`,
+      method: HTTPMethods.GET,
+      success: async ({ resolve, response }: any) => {
+        const token = (await response.json()).token as string;
+        setBotToken(token);
+        resolve();
+      },
+    });
+  }, [])
 
   return (
     <div css={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
@@ -100,7 +122,17 @@ export const MonitoringPage = ({ experimentId, runUuid }: { runUuid: string; exp
             setIsBotModalActive(false);
           }}
           onSubmit={(value: string) => {
-            setBotToken(value);
+            fetchEndpoint({
+              relativeUrl: `ajax-api/2.0/mlflow/bot-token/add`,
+              method: HTTPMethods.POST,
+              body: JSON.stringify({
+                token: value,
+              }),
+              success: async ({ resolve, response }: any) => {
+                setBotToken(value);
+                resolve();
+              },
+            });
           }}
         />
       )}
@@ -111,7 +143,17 @@ export const MonitoringPage = ({ experimentId, runUuid }: { runUuid: string; exp
             setIsSourceModalActive(false);
           }}
           onSubmit={(value: string) => {
-            setSource(value);
+            fetchEndpoint({
+              relativeUrl: `ajax-api/2.0/mlflow/metrics-source/add`,
+              method: HTTPMethods.POST,
+              body: JSON.stringify({
+                source: value,
+              }),
+              success: async ({ resolve, response }: any) => {
+                setSource(value);
+                resolve();
+              },
+            });
           }}
         />
       )}
