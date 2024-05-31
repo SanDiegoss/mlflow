@@ -99,7 +99,7 @@ export const MonitoringPage = ({ experimentId, runUuid }: { runUuid: string; exp
       relativeUrl: `ajax-api/2.0/mlflow/rules/get`,
       method: HTTPMethods.GET,
       success: async ({ resolve, response }: any) => {
-        const rules = (await response.json()).rules as Rule[];
+        const rules = (await response.json()).rules || [] as Rule[];
         setRules(rules);
         resolve();
       },
@@ -236,7 +236,7 @@ export const MonitoringPage = ({ experimentId, runUuid }: { runUuid: string; exp
             success: async ({ resolve, response }: any) => {
               setRules(
                 rules.filter((rule) => {
-                  return rule.id !== ruleId;
+                  return rule.rule_id !== ruleId;
                 }),
               );
               resolve();

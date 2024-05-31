@@ -9,5 +9,5 @@ export interface RuleDTO {
 }
 
 export interface Rule extends RuleDTO {
-  id: string;
+  rule_id: string;
 }

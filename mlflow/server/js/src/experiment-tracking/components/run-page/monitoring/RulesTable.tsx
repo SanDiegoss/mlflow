@@ -50,9 +50,9 @@ export const RulesTable = ({
       {
         id: 'rule-id',
         enableResizing: true,
-        size: 80,
-        maxSize: 240,
-        minSize: 80,
+        size: 240,
+        maxSize: 360,
+        minSize: 240,
         header: () => (
           <FormattedMessage
             defaultMessage="Rule id"
@@ -65,7 +65,7 @@ export const RulesTable = ({
               paddingTop: '2px',
             }}
           >
-            {original.id}
+            {original.rule_id}
           </div>
         ),
       },
@@ -139,7 +139,7 @@ export const RulesTable = ({
               size="small"
               css={{ flexShrink: 0 }}
               onClick={() => {
-                onDelete(original.id);
+                onDelete(original.rule_id);
               }}
             >
               Delete
@@ -155,7 +155,7 @@ export const RulesTable = ({
     data: rulesList,
     getCoreRowModel: getCoreRowModel(),
     getExpandedRowModel: getExpandedRowModel(),
-    getRowId: (rule) => rule.id,
+    getRowId: (rule) => rule.rule_id,
     enableColumnResizing: true,
     columnResizeMode: 'onChange',
     columns,
