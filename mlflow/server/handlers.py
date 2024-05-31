@@ -17,7 +17,16 @@ from flask import Response, current_app, jsonify, request, send_file
 from google.protobuf import descriptor
 from google.protobuf.json_format import ParseError
 
-from mlflow.entities import DatasetInput, ExperimentTag, FileInfo, Metric, Param, RunTag, ViewType
+from mlflow.entities import (
+    CustomMetric,
+    DatasetInput,
+    ExperimentTag,
+    FileInfo,
+    Metric,
+    Param,
+    RunTag,
+    ViewType,
+)
 from mlflow.entities.model_registry import ModelVersionTag, RegisteredModelTag
 from mlflow.entities.multipart_upload import MultipartUploadPart
 from mlflow.environment_variables import MLFLOW_DEPLOYMENTS_TARGET
@@ -2314,7 +2323,9 @@ def _get_custom_metrics():
 
     custom_metrics = requests_response.json()
     response_message = GetCustomMetrics.Response()
-    response_message.custom_metrics.extend([cm.to_proto() for cm in custom_metrics])
+    response_message.custom_metrics.extend(
+        [CustomMetric.from_dictionary(cm).to_proto() for cm in custom_metrics]
+    )
     response = Response(mimetype="application/json")
     response.set_data(message_to_json(response_message))
     return response
