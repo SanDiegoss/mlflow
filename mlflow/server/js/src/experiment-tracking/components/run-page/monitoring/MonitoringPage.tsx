@@ -1,6 +1,6 @@
 import { useDesignSystemTheme, Modal, Button, Typography } from '@databricks/design-system';
 import { RulesTable } from './RulesTable';
-import { Rule, NotificationMethod, TelegramObserver } from './types';
+import { Rule, NotificationMethod, TelegramObserver, RuleDTO } from './types';
 import { RuleDetailsModal } from './RuleDetailsModal';
 import { useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
@@ -82,6 +82,7 @@ export const MonitoringPage = ({ experimentId, runUuid }: { runUuid: string; exp
   const [isSourceModalActive, setIsSourceModalActive] = useState<boolean>(false);
   const [isBotModalActive, setIsBotModalActive] = useState<boolean>(false);
   const [isAddRuleModalActive, setIsAddRuleModalActive] = useState<boolean>(false);
+  const [rules, setRules] = useState<Rule[]>(testRules);
 
   useEffect(() => {
     fetchEndpoint({
@@ -102,7 +103,7 @@ export const MonitoringPage = ({ experimentId, runUuid }: { runUuid: string; exp
         resolve();
       },
     });
-  }, [])
+  }, []);
 
   return (
     <div css={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
@@ -163,8 +164,17 @@ export const MonitoringPage = ({ experimentId, runUuid }: { runUuid: string; exp
           onClose={() => {
             setIsAddRuleModalActive(false);
           }}
-          onSubmit={() => {
-            // TODO FETCH NEW RULE then update rules state
+          onSubmit={(rule: RuleDTO) => {
+            // fetchEndpoint({
+            //   relativeUrl: `ajax-api/2.0/mlflow/rules/add`,
+            //   method: HTTPMethods.POST,
+            //   body: JSON.stringify(rule),
+            //   success: async ({ resolve, response }: any) => {
+            //     const newRule = (await response.json()).rule
+            //     setRules([...rules, newRule]);
+            //     resolve();
+            //   },
+            // });
           }}
           experimentId={experimentId}
           runUuid={runUuid}
@@ -199,7 +209,27 @@ export const MonitoringPage = ({ experimentId, runUuid }: { runUuid: string; exp
           })}
         </div>
       </div>
-      <RulesTable rules={testRules} onDetails={setDetailsModalState} />
+      <RulesTable
+        rules={rules}
+        onDetails={setDetailsModalState}
+        onDelete={(ruleId: string) => {
+          // fetchEndpoint({
+          //   relativeUrl: `ajax-api/2.0/mlflow/rules/delete`,
+          //   method: HTTPMethods.POST,
+          //   body: JSON.stringify({
+          //     rule_id: ruleId,
+          //   }),
+          //   success: async ({ resolve, response }: any) => {
+          //     setRules(
+          //       rules.filter((rule) => {
+          //         return rule.id !== ruleId;
+          //       }),
+          //     );
+          //     resolve();
+          //   },
+          // });
+        }}
+      />
     </div>
   );
 };

@@ -26,9 +26,11 @@ type ParamsColumnDef = ColumnDef<Rule> & {
 export const RulesTable = ({
   rules,
   onDetails,
+  onDelete,
 }: {
   rules: Rule[];
   onDetails: React.Dispatch<React.SetStateAction<ModalState>>;
+  onDelete: (...args: any[]) => any;
 }) => {
   const { theme } = useDesignSystemTheme();
   const intl = useIntl();
@@ -136,6 +138,9 @@ export const RulesTable = ({
               componentId="codegen_mlflow_app_src_experiment-tracking_components_run-page_monitoring_rulestable.tsx_2"
               size="small"
               css={{ flexShrink: 0 }}
+              onClick={() => {
+                onDelete(original.id);
+              }}
             >
               Delete
             </Button>
@@ -143,7 +148,7 @@ export const RulesTable = ({
         ),
       },
     ],
-    [onDetails],
+    [onDetails, onDelete],
   );
 
   const table = useReactTable({
