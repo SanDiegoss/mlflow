@@ -1,6 +1,6 @@
-import { useDesignSystemTheme, Modal, Button, Typography } from '@databricks/design-system';
+import { Button, Typography } from '@databricks/design-system';
 import { RulesTable } from './RulesTable';
-import { Rule, NotificationMethod, TelegramObserver, RuleDTO } from './types';
+import { Rule, RuleDTO } from './types';
 import { RuleDetailsModal } from './RuleDetailsModal';
 import { useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
@@ -10,33 +10,10 @@ import { AddRuleModal } from './AddRuleModal/AddRuleModal';
 import { HTTPMethods, fetchEndpoint } from 'common/utils/FetchUtils';
 import { ViewMetricsModal } from './ViewMetricsModal';
 
-const testRule: Rule = {
-  id: '1',
-  name: 'MyFirstRule',
-  experiment_id: 'experimentIdExample',
-  run_id: 'runUuidExample',
-  conditions: ['keka > 100'],
-  observers: [
-    {
-      id: 1,
-      method: NotificationMethod.TELEGRAM,
-      user_id: 1,
-    } as TelegramObserver,
-    {
-      id: 2,
-      method: NotificationMethod.TELEGRAM,
-      user_id: 2,
-    } as TelegramObserver,
-  ],
-};
-
 export interface ModalState {
   isOpen: boolean;
   currentRule: Rule | null;
 }
-
-const testRules: Rule[] = [testRule];
-
 const rednerBotButton = (isBotAuthorized: boolean, onClick: any) => {
   return (
     <Button
@@ -90,7 +67,6 @@ const renderViewMetricsButton = (isSourceAdded: boolean, onClick: any) => {
 };
 
 export const MonitoringPage = ({ experimentId, runUuid }: { runUuid: string; experimentId: string }) => {
-  const { theme } = useDesignSystemTheme();
   const [detailsModalState, setDetailsModalState] = useState<ModalState>({ isOpen: false, currentRule: null });
   const [botToken, setBotToken] = useState<string>('');
   const [source, setSource] = useState<string>('');
@@ -98,7 +74,7 @@ export const MonitoringPage = ({ experimentId, runUuid }: { runUuid: string; exp
   const [isBotModalActive, setIsBotModalActive] = useState<boolean>(false);
   const [isAddRuleModalActive, setIsAddRuleModalActive] = useState<boolean>(false);
   const [isMetricsViewModal, setIsMetricsViewModal] = useState<boolean>(false);
-  const [rules, setRules] = useState<Rule[]>(testRules);
+  const [rules, setRules] = useState<Rule[]>([]);
 
   useEffect(() => {
     fetchEndpoint({
@@ -119,15 +95,15 @@ export const MonitoringPage = ({ experimentId, runUuid }: { runUuid: string; exp
         resolve();
       },
     });
-    // fetchEndpoint({
-    //   relativeUrl: `ajax-api/2.0/mlflow/rules/get`,
-    //   method: HTTPMethods.GET,
-    //   success: async ({ resolve, response }: any) => {
-    //     const rules = (await response.json()).rules as Rule[];
-    //     setRules(rules);
-    //     resolve();
-    //   },
-    // });
+    fetchEndpoint({
+      relativeUrl: `ajax-api/2.0/mlflow/rules/get`,
+      method: HTTPMethods.GET,
+      success: async ({ resolve, response }: any) => {
+        const rules = (await response.json()).rules as Rule[];
+        setRules(rules);
+        resolve();
+      },
+    });
   }, []);
 
   return (
@@ -200,16 +176,16 @@ export const MonitoringPage = ({ experimentId, runUuid }: { runUuid: string; exp
             setIsAddRuleModalActive(false);
           }}
           onSubmit={(rule: RuleDTO) => {
-            // fetchEndpoint({
-            //   relativeUrl: `ajax-api/2.0/mlflow/rules/add`,
-            //   method: HTTPMethods.POST,
-            //   body: JSON.stringify(rule),
-            //   success: async ({ resolve, response }: any) => {
-            //     const newRule = (await response.json()).rule
-            //     setRules([...rules, newRule]);
-            //     resolve();
-            //   },
-            // });
+            fetchEndpoint({
+              relativeUrl: `ajax-api/2.0/mlflow/rules/add`,
+              method: HTTPMethods.POST,
+              body: JSON.stringify(rule),
+              success: async ({ resolve, response }: any) => {
+                const newRule = (await response.json()).rule as Rule
+                setRules([...rules, newRule]);
+                resolve();
+              },
+            });
           }}
           experimentId={experimentId}
           runUuid={runUuid}
@@ -220,7 +196,7 @@ export const MonitoringPage = ({ experimentId, runUuid }: { runUuid: string; exp
           <FormattedMessage
             defaultMessage="Rules ({length})"
             description="Run page > Monitoring > Rules table > Section title"
-            values={{ length: testRules.length }}
+            values={{ length: rules.length }}
           />
         </Typography.Title>
         <div
@@ -251,21 +227,21 @@ export const MonitoringPage = ({ experimentId, runUuid }: { runUuid: string; exp
         rules={rules}
         onDetails={setDetailsModalState}
         onDelete={(ruleId: string) => {
-          // fetchEndpoint({
-          //   relativeUrl: `ajax-api/2.0/mlflow/rules/delete`,
-          //   method: HTTPMethods.POST,
-          //   body: JSON.stringify({
-          //     rule_id: ruleId,
-          //   }),
-          //   success: async ({ resolve, response }: any) => {
-          //     setRules(
-          //       rules.filter((rule) => {
-          //         return rule.id !== ruleId;
-          //       }),
-          //     );
-          //     resolve();
-          //   },
-          // });
+          fetchEndpoint({
+            relativeUrl: `ajax-api/2.0/mlflow/rules/delete`,
+            method: HTTPMethods.POST,
+            body: JSON.stringify({
+              rule_id: ruleId,
+            }),
+            success: async ({ resolve, response }: any) => {
+              setRules(
+                rules.filter((rule) => {
+                  return rule.id !== ruleId;
+                }),
+              );
+              resolve();
+            },
+          });
         }}
       />
     </div>
