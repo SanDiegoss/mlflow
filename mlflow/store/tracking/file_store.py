@@ -15,7 +15,9 @@ from mlflow.entities import (
     ExperimentTag,
     InputTag,
     Metric,
+    Observer,
     Param,
+    Rule,
     Run,
     RunData,
     RunInfo,
@@ -154,7 +156,7 @@ class FileStore(AbstractStore):
     INPUTS_FOLDER_NAME = "inputs"
     RESERVED_EXPERIMENT_FOLDERS = [EXPERIMENT_TAGS_FOLDER_NAME, DATASETS_FOLDER_NAME]
     META_DATA_FILE_NAME = "meta.yaml"
-    CUSTOM_METRICS_FILE_NAME = "custom_metrics.yaml"
+    RULES_FILE_NAME = "rules.yaml"
     DEFAULT_EXPERIMENT_ID = "0"
 
     def __init__(self, root_directory=None, artifact_root_uri=None):
@@ -1037,6 +1039,82 @@ class FileStore(AbstractStore):
             return ""
 
         return meta_info_dict["source"]
+
+    def get_rules(self):
+        global_rule = os.path.join(self.root_directory, FileStore.RULES_FILE_NAME)
+
+        rules_dict = {}
+        if not os.path.exists(global_rule):
+            return []
+
+        rules_dict = read_yaml(self.root_directory, FileStore.RULES_FILE_NAME)
+        if rules_dict.get("rules") is None:
+            return []
+
+        rules = []
+        for dict_rule in rules_dict["rules"]:
+            observers = []
+
+            for dict_observer in dict_rule["observers"]:
+                observers.append(Observer.from_dictionary(dict_observer))
+
+            rules.append(
+                Rule(
+                    rule_id=dict_rule["rule_id"],
+                    name=dict_rule["name"],
+                    experiment_id=dict_rule["experiment_id"],
+                    run_id=dict_rule["run_id"],
+                    conditions=dict_rule["conditions"],
+                    observers=observers,
+                )
+            )
+
+        return rules
+
+    def add_rule(self, name, experiment_id, run_id, conditions, observers):
+        rule_id = uuid.uuid4().hex
+        rule = Rule(
+            rule_id=rule_id,
+            name=name,
+            experiment_id=experiment_id,
+            run_id=run_id,
+            conditions=conditions,
+            observers=observers,
+        )
+
+        global_rule = os.path.join(self.root_directory, FileStore.RULES_FILE_NAME)
+        rules_dict = {}
+        rules_dict["rules"] = []
+        if os.path.exists(global_rule):
+            rules_dict = read_yaml(self.root_directory, FileStore.RULES_FILE_NAME)
+
+        observers_list_dict = []
+        for o in observers:
+            observers_list_dict.append(dict(o))
+
+        rule_dict = dict(rule)
+        rule_dict["observers"] = observers_list_dict
+
+        rules_dict["rules"].append(rule_dict)
+        write_yaml(self.root_directory, FileStore.RULES_FILE_NAME, rules_dict, overwrite=True)
+        return rule
+
+    def delete_rule(self, rule_id):
+        global_rule = os.path.join(self.root_directory, FileStore.RULES_FILE_NAME)
+        rules_dict = {}
+        rules_dict["rules"] = []
+        if os.path.exists(global_rule):
+            rules_dict = read_yaml(self.root_directory, FileStore.RULES_FILE_NAME)
+
+        new_dict = {}
+        new_dict["rules"] = []
+
+        for r in rules_dict["rules"]:
+            if r["rule_id"] != rule_id:
+                new_dict["rules"].append(r)
+
+        write_yaml(self.root_directory, FileStore.RULES_FILE_NAME, new_dict, overwrite=True)
+        return
 
     def set_experiment_tag(self, experiment_id, tag):
         """

@@ -23,6 +23,7 @@ from mlflow.entities import (
     ExperimentTag,
     FileInfo,
     Metric,
+    Observer,
     Param,
     RunTag,
     ViewType,
@@ -76,9 +77,11 @@ from mlflow.protos.model_registry_pb2 import (
 from mlflow.protos.service_pb2 import (
     AddBotToken,
     AddMetricsSource,
+    AddRule,
     CreateExperiment,
     CreateRun,
     DeleteExperiment,
+    DeleteRule,
     DeleteRun,
     DeleteTag,
     GetBotToken,
@@ -88,6 +91,7 @@ from mlflow.protos.service_pb2 import (
     GetMetricHistory,
     GetMetricHistoryBulkInterval,
     GetMetricsSource,
+    GetRules,
     GetRun,
     ListArtifacts,
     LogBatch,
@@ -2331,6 +2335,67 @@ def _get_custom_metrics():
     return response
 
 
+@catch_mlflow_exception
+@_disable_if_artifacts_only
+def _get_rules():
+    rules = _get_tracking_store().get_rules()
+    response_message = GetRules.Response()
+    response_message.rules.extend([r.to_proto() for r in rules])
+    response = Response(mimetype="application/json")
+    response.set_data(message_to_json(response_message))
+    return response
+
+
+@catch_mlflow_exception
+@_disable_if_artifacts_only
+def _add_rule():
+    def _assert_observer_fields_present(observers):
+        for o in observers:
+            _assert_required(o.get("id"))
+            _assert_required(o.get("method"))
+            _assert_required(o.get("user_id"))
+
+    request_message = _get_request_message(
+        AddRule(),
+        schema={
+            "name": [_assert_required, _assert_string],
+            "experiment_id": [_assert_intlike],
+            "run_id": [_assert_string],
+            "conditions": [_assert_array],
+            "observers": [_assert_array, _assert_observer_fields_present],
+        },
+    )
+
+    conditions = list(request_message.conditions)
+    observers = [Observer.from_proto(o) for o in request_message.observers]
+    rule = _get_tracking_store().add_rule(
+        name=request_message.name,
+        experiment_id=request_message.experiment_id,
+        run_id=request_message.run_id,
+        conditions=conditions,
+        observers=observers,
+    )
+
+    response_message = AddRule.Response()
+    response_message.rule.MergeFrom(rule.to_proto())
+    response = Response(mimetype="application/json")
+    response.set_data(message_to_json(response_message))
+    return response
+
+
+@catch_mlflow_exception
+@_disable_if_artifacts_only
+def _delete_rule():
+    request_message = _get_request_message(
+        DeleteRule(), schema={"rule_id": [_assert_required, _assert_string]}
+    )
+    _get_tracking_store().delete_rule(request_message.rule_id)
+    response_message = DeleteRule.Response()
+    response = Response(mimetype="application/json")
+    response.set_data(message_to_json(response_message))
+    return response
+
+
 def _get_rest_path(base_path):
     return f"/api/2.0{base_path}"
 
@@ -2448,4 +2513,7 @@ HANDLERS = {
     AddMetricsSource: _add_metrics_source,
     GetMetricsSource: _get_metrics_source,
     GetCustomMetrics: _get_custom_metrics,
+    GetRules: _get_rules,
+    AddRule: _add_rule,
+    DeleteRule: _delete_rule,
 }

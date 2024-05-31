@@ -13,7 +13,9 @@ from mlflow.entities.file_info import FileInfo
 from mlflow.entities.input_tag import InputTag
 from mlflow.entities.lifecycle_stage import LifecycleStage
 from mlflow.entities.metric import Metric
+from mlflow.entities.observer import Observer
 from mlflow.entities.param import Param
+from mlflow.entities.rule import Rule
 from mlflow.entities.run import Run
 from mlflow.entities.run_data import RunData
 from mlflow.entities.run_info import RunInfo
@@ -29,6 +31,7 @@ __all__ = [
     "FileInfo",
     "Metric",
     "Param",
+    "Rule",
     "Run",
     "RunData",
     "RunInfo",
@@ -42,5 +45,6 @@ __all__ = [
     "InputTag",
     "DatasetInput",
     "RunInputs",
+    "Observer",
     "_DatasetSummary",
 ]

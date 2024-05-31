@@ -1,17 +1,6 @@
 from mlflow.entities._mlflow_object import _MlflowObject
 from mlflow.protos.service_pb2 import CustomMetric as ProtoCustomMetric
 
-# class searchable_attribute(property):
-#     # Wrapper class over property to designate some of the properties as searchable
-#     # run attributes
-#     pass
-
-
-# class orderable_attribute(property):
-#     # Wrapper class over property to designate some of the properties as orderable
-#     # run attributes
-#     pass
-
 
 class CustomMetric(_MlflowObject):
     """
