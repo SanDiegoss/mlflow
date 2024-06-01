@@ -65,6 +65,7 @@ class Rule(_MlflowObject):
         proto = ProtoRule()
         proto.rule_id = self.rule_id
         proto.name = self.name
+        proto.experiment_id = self.experiment_id
         proto.run_id = self.run_id
         proto.conditions.extend(list(self._conditions))
         proto.observers.extend([o.to_proto() for o in self._observers])
