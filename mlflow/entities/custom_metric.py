@@ -13,20 +13,30 @@ class CustomMetric(_MlflowObject):
         value,
         run_id,
     ):
+        if name is None:
+            raise Exception("name cannot be None")
+        if value is None:
+            raise Exception("value cannot be None")
+        if run_id is None:
+            raise Exception("run_id cannot be None")
+
         self._name = name
         self._value = value
         self._run_id = run_id
 
     @property
     def name(self):
+        """String containing name."""
         return self._name
 
     @property
     def value(self):
+        """Vlaue of the metric."""
         return self._value
 
     @property
     def run_id(self):
+        """String containing run id."""
         return self._run_id
 
     def to_proto(self):

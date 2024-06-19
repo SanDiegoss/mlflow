@@ -1,3 +1,4 @@
+import { useDesignSystemTheme } from '@databricks/design-system';
 import { SimpleChangingModal } from './SimpleChangingModal/SimpleChangingModal';
 
 interface Props {

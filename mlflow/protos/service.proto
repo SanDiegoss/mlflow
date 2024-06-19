@@ -1275,80 +1275,135 @@ message GetExperimentByName {
 
 message AddBotToken {
   option (scalapb.message).extends = "com.databricks.rpc.RPC[$this.Response]";
+
+  // New token of the bot.
   optional string token = 1 [(validate_required) = true];
+
   message Response {
   }
 }
 
 message GetBotToken {
   option (scalapb.message).extends = "com.databricks.rpc.RPC[$this.Response]";
+
   message Response {
+    // Current token of the bot.
     optional string token = 1;
   }
 }
 
 message AddMetricsSource {
   option (scalapb.message).extends = "com.databricks.rpc.RPC[$this.Response]";
+
+  // New source of the metrics.
   optional string source = 1 [(validate_required) = true];
+
   message Response {
   }
 }
 
 message GetMetricsSource {
   option (scalapb.message).extends = "com.databricks.rpc.RPC[$this.Response]";
+
   message Response {
+    // Current source of the metrics.
     optional string source = 1;
   }
 }
 
 message CustomMetric {
+
+  // Name of the custom metric.
   optional string name = 1;
+
+  // Value of the custom metric.
   optional double value = 2;
+
+  // ID of the run.
   optional string run_id = 3;
-}
-message Observer {
-  optional int64 id = 1; 
-  optional string method = 2;
-  optional int64 user_id = 3;
-}
-message Rule {
-  optional string rule_id = 1;
-  optional string name = 2;
-  optional string experiment_id = 3;
-  optional string run_id = 4;
-  repeated string conditions = 5;
-  repeated Observer observers = 6;
 }
 
 message GetCustomMetrics {
   option (scalapb.message).extends = "com.databricks.rpc.RPC[$this.Response]";
+
   message Response {
+    // All custom metrics.
     repeated CustomMetric custom_metrics = 1;
   }
 }
 
+message Observer {
+
+  // ID of the observer.
+  optional int64 id = 1; 
+
+  // Method.
+  optional string method = 2;
+
+  // ID of the user.
+  optional int64 user_id = 3;
+}
+
+message Rule {
+
+  // ID of the rule.
+  optional string rule_id = 1;
+
+  // Name of the rule.
+  optional string name = 2;
+
+  // ID of the experiment.
+  optional string experiment_id = 3;
+
+  // ID of the run.
+  optional string run_id = 4;
+
+  // Array of the conditions.
+  repeated string conditions = 5;
+
+  // Observers of the rule.
+  repeated Observer observers = 6;
+}
+
 message GetRules {
   option (scalapb.message).extends = "com.databricks.rpc.RPC[$this.Response]";
+
   message Response {
+    // All rules.
     repeated Rule rules = 1;
   }
 }
 
 message AddRule {
   option (scalapb.message).extends = "com.databricks.rpc.RPC[$this.Response]";
+
+  // Name of the rule.
   optional string name = 1;
+
+  // ID of the experiment.
   optional string experiment_id = 2;
+
+  // ID of the run.
   optional string run_id = 3;
+
+  // Array of the conditions.
   repeated string conditions = 4;
+
+  // Observers of the rule.
   repeated Observer observers = 5;
+
   message Response {
+    // Created rule.
     optional Rule rule = 1;
   }
 }
 
 message DeleteRule {
   option (scalapb.message).extends = "com.databricks.rpc.RPC[$this.Response]";
+
+  // ID of the rule.
   optional string rule_id = 1;
+
   message Response {
   }
 }
